@@ -6,45 +6,215 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="03" author="techgeeknext">
-        <comment>Inserting Company records</comment>
-        <insert tableName="company">
-            <column name="id" valueNumeric="1"/>
-            <column name="name" value="techgeeknext_company_01"/>
-            <column name="employee" valueNumeric="01"/>
+    <changeSet id="1" author="ivaylo_ivanov">
+        <insert tableName="user">
+            <column name="name" value="admin"/>
+            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="role" value="ADMIN"/>
         </insert>
-        <insert tableName="company">
-            <column name="id" valueNumeric="2"/>
-            <column name="name" value="techgeeknext_company_02"/>
-            <column name="employee" valueNumeric="02"/>
+        <insert tableName="user">
+            <column name="name" value="Ivan"/>
+            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="role" value="ORGANISER"/>
         </insert>
-        <insert tableName="company">
-            <column name="id" valueNumeric="3"/>
-            <column name="name" value="techgeeknext_company_03"/>
-            <column name="employee" valueNumeric="03"/>
+        <insert tableName="user">
+            <column name="name" value="Maria"/>
+            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="role" value="ORGANISER"/>
         </insert>
-        <insert tableName="company">
-            <column name="id" valueNumeric="4"/>
-            <column name="name" value="techgeeknext_company_04"/>
-            <column name="employee" valueNumeric="04"/>
+        <insert tableName="user">
+            <column name="name" value="Todor"/>
+            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="role" value="DISTRIBUTOR"/>
         </insert>
-        <insert tableName="company">
-            <column name="id" valueNumeric="5"/>
-            <column name="name" value="techgeeknext_company_05"/>
-            <column name="employee" valueNumeric="05"/>
+        <insert tableName="user">
+            <column name="name" value="Marin"/>
+            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="user">
+            <column name="name" value="Kalin"/>
+            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="role" value="DISTRIBUTOR"/>
         </insert>
 
-        <!--
-        To update the company table data on precondition
-        if name is techgeeknext_company_03 then update employee to 05
-        <preConditions>
-                <dbms type="mysql"/>
-            </preConditions>
-            <update tableName="company">
-                <column name="employee" value="05"/>
-                <where>name = 'techgeeknext_company_03'</where>
-            </update>
-        !-->
+        <insert tableName="event">
+            <column name="type" value="Spider-Man: No Way Home"/>
+            <column name="places_count" valueNumeric="30"/>
+            <column name="places_type" value="Full Rocker"/>
+            <column name="price" valueNumeric="10.5"/>
+            <column name="tickets_per_user" valueNumeric="5"/>
+            <column name="date" valueDate="2022-09-01 14:00:00"/>
+            <column name="location" value="Paradise Center, Sofia"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="The Lion King"/>
+            <column name="places_count" valueNumeric="100"/>
+            <column name="places_type" value="Vip Kids Sofa"/>
+            <column name="price" valueNumeric="30"/>
+            <column name="tickets_per_user" valueNumeric="10"/>
+            <column name="date" valueDate="2022-09-05 15:30:00"/>
+            <column name="location" value="Grand Mall, Varna"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Furious 7"/>
+            <column name="places_count" valueNumeric="50"/>
+            <column name="places_type" value="Vip Cinema Seating"/>
+            <column name="price" valueNumeric="18"/>
+            <column name="tickets_per_user" valueNumeric="3"/>
+            <column name="date" valueDate="2022-09-11 20:10:00"/>
+            <column name="location" value="Terra Mall, Gabrovo"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Black Panther"/>
+            <column name="places_count" valueNumeric="20"/>
+            <column name="places_type" value="Planetarium Seating"/>
+            <column name="price" valueNumeric="5.99"/>
+            <column name="tickets_per_user" valueNumeric="1"/>
+            <column name="date" valueDate="2022-09-16 11:30:00"/>
+            <column name="location" value="Terra Mall, Gabrovo"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Iron Man 3"/>
+            <column name="places_count" valueNumeric="25"/>
+            <column name="places_type" value="Premium Glider"/>
+            <column name="price" valueNumeric="25"/>
+            <column name="tickets_per_user" valueNumeric="8"/>
+            <column name="date" valueDate="2022-09-22 17:00:00"/>
+            <column name="location" value="Paradise Center, Sofia"/>
+            <column name="user_id" valueNumeric="3"/>
+        </insert>
 
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="4"/>
+            <column name="event_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="4"/>
+            <column name="event_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="5"/>
+            <column name="event_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="5"/>
+            <column name="event_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="5"/>
+            <column name="event_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="6"/>
+            <column name="event_id" valueNumeric="5"/>
+        </insert>
+
+        <insert tableName="ticket">
+            <column name="customer_ucn" value="8810124375"/>
+            <column name="customer_name" value="Petar Ivanov"/>
+            <column name="event_id" valueNumeric="1"/>
+            <column name="tickets_count" valueNumeric="5"/>
+            <column name="date" valueDate="2022-09-01 08:20:00"/>
+            <column name="distributor_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="ticket">
+            <column name="customer_ucn" value="9103049371"/>
+            <column name="customer_name" value="Marina Dimitrova"/>
+            <column name="event_id" valueNumeric="1"/>
+            <column name="tickets_count" valueNumeric="2"/>
+            <column name="date" valueDate="2022-08-23 17:00:00"/>
+            <column name="distributor_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="ticket">
+            <column name="customer_ucn" value="7701042466"/>
+            <column name="customer_name" value="Ivelin Georgiev"/>
+            <column name="event_id" valueNumeric="1"/>
+            <column name="tickets_count" valueNumeric="1"/>
+            <column name="date" valueDate="2022-08-10 13:44:00"/>
+            <column name="distributor_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="ticket">
+            <column name="customer_ucn" value="6608103451"/>
+            <column name="customer_name" value="Tihomir Petrov"/>
+            <column name="event_id" valueNumeric="2"/>
+            <column name="tickets_count" valueNumeric="10"/>
+            <column name="date" valueDate="2022-08-15 05:24:00"/>
+            <column name="distributor_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="ticket">
+            <column name="customer_ucn" value="7708091245"/>
+            <column name="customer_name" value="Kalina Ivanova"/>
+            <column name="event_id" valueNumeric="2"/>
+            <column name="tickets_count" valueNumeric="5"/>
+            <column name="date" valueDate="2022-08-17 10:30:00"/>
+            <column name="distributor_id" valueNumeric="5"/>
+        </insert>
+
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="2"/>
+            <column name="user_to" valueNumeric="4"/>
+            <column name="value" valueNumeric="3"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="4"/>
+            <column name="value" valueNumeric="4"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="2"/>
+            <column name="user_to" valueNumeric="5"/>
+            <column name="value" valueNumeric="1"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="5"/>
+            <column name="value" valueNumeric="5"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="2"/>
+            <column name="user_to" valueNumeric="6"/>
+            <column name="value" valueNumeric="3"/>
+        </insert>
+
+        <insert tableName="notification">
+            <column name="message" value="Organiser with name 'Ivan' assign you new event 'Spider-Man: No Way Home'."/>
+        </insert>
+        <insert tableName="notification">
+            <column name="message" value="Only 22 tickets left for 'Spider-Man: No Way Home' event."/>
+        </insert>
+        <insert tableName="notification">
+            <column name="message" value="One day until 'Furious 7' starts and 50 tickets are not sold."/>
+        </insert>
+
+        <insert tableName="user_notifications">
+            <column name="user_id" valueNumeric="4"/>
+            <column name="notification_id" valueNumeric="1"/>
+            <column name="seen" valueBoolean="false"/>
+        </insert>
+        <insert tableName="user_notifications">
+            <column name="user_id" valueNumeric="4"/>
+            <column name="notification_id" valueNumeric="2"/>
+            <column name="seen" valueBoolean="true"/>
+        </insert>
+        <insert tableName="user_notifications">
+            <column name="user_id" valueNumeric="2"/>
+            <column name="notification_id" valueNumeric="2"/>
+            <column name="seen" valueBoolean="false"/>
+        </insert>
+        <insert tableName="user_notifications">
+            <column name="user_id" valueNumeric="5"/>
+            <column name="notification_id" valueNumeric="3"/>
+            <column name="seen" valueBoolean="false"/>
+        </insert>
+        <insert tableName="user_notifications">
+            <column name="user_id" valueNumeric="2"/>
+            <column name="notification_id" valueNumeric="3"/>
+            <column name="seen" valueBoolean="false"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>
