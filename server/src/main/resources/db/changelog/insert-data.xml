@@ -7,34 +7,34 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="1" author="ivaylo_ivanov">
-        <insert tableName="user">
+        <insert tableName="ticket_user">
             <column name="name" value="admin"/>
-            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="ADMIN"/>
         </insert>
-        <insert tableName="user">
+        <insert tableName="ticket_user">
             <column name="name" value="Ivan"/>
-            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="ORGANISER"/>
         </insert>
-        <insert tableName="user">
+        <insert tableName="ticket_user">
             <column name="name" value="Maria"/>
-            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="ORGANISER"/>
         </insert>
-        <insert tableName="user">
+        <insert tableName="ticket_user">
             <column name="name" value="Todor"/>
-            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="DISTRIBUTOR"/>
         </insert>
-        <insert tableName="user">
+        <insert tableName="ticket_user">
             <column name="name" value="Marin"/>
-            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="DISTRIBUTOR"/>
         </insert>
-        <insert tableName="user">
+        <insert tableName="ticket_user">
             <column name="name" value="Kalin"/>
-            <column name="password" value="$2a$12$WCWY5cMTigYsijdo9EBLF.xF2.vZV7rDYXT/x0lWNYaYXLhFf008W"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="DISTRIBUTOR"/>
         </insert>
 

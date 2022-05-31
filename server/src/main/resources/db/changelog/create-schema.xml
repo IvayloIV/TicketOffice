@@ -9,14 +9,14 @@
     <property name="now" value="sysdate" dbms="oracle"/>
 
     <changeSet id="1" author="ivaylo_ivanov">
-        <createTable tableName="user">
+        <createTable tableName="ticket_user">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" unique="true"/>
             </column>
-            <column name="password" type="char(60)">
+            <column name="user_password" type="char(60)">
                 <constraints nullable="false"/>
             </column>
             <column name="role" type="varchar(63)">
@@ -51,7 +51,7 @@
         </createTable>
 
         <addForeignKeyConstraint baseTableName="event" baseColumnNames="user_id" constraintName="fk_event_user"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="ticket_user" referencedColumnNames="id"/>
 
         <createTable tableName="distributor">
             <column name="user_id" type="bigint">
@@ -63,7 +63,7 @@
         </createTable>
         
         <addForeignKeyConstraint baseTableName="distributor" baseColumnNames="user_id" constraintName="fk_distributor_user"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="ticket_user" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="distributor" baseColumnNames="event_id" constraintName="fk_distributor_event"
                                  referencedTableName="event" referencedColumnNames="id"/>
         <addPrimaryKey tableName="distributor" columnNames="user_id, event_id" constraintName="pk_distributor"/>
@@ -93,7 +93,7 @@
         </createTable>
 
         <addForeignKeyConstraint baseTableName="ticket" baseColumnNames="distributor_id" constraintName="fk_ticket_user"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="ticket_user" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="ticket" baseColumnNames="event_id" constraintName="fk_ticket_event"
                                  referencedTableName="event" referencedColumnNames="id"/>
 
@@ -110,9 +110,9 @@
         </createTable>
 
         <addForeignKeyConstraint baseTableName="rating" baseColumnNames="user_from" constraintName="fk_rating_user_from"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="ticket_user" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="rating" baseColumnNames="user_to" constraintName="fk_rating_user_to"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="ticket_user" referencedColumnNames="id"/>
         <addPrimaryKey tableName="rating" columnNames="user_from, user_to" constraintName="pk_rating"/>
 
         <createTable tableName="notification">
@@ -137,7 +137,7 @@
         </createTable>
 
         <addForeignKeyConstraint baseTableName="user_notifications" baseColumnNames="user_id" constraintName="fk_user_notifications_user"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="ticket_user" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="user_notifications" baseColumnNames="notification_id" constraintName="fk_user_notifications_notification"
                                  referencedTableName="notification" referencedColumnNames="id"/>
         <addPrimaryKey tableName="user_notifications" columnNames="user_id, notification_id" constraintName="pk_user_notifications"/>
