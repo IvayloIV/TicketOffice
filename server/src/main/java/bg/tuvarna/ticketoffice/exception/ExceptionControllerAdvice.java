@@ -1,6 +1,6 @@
 package bg.tuvarna.ticketoffice.exception;
 
-import bg.tuvarna.ticketoffice.domain.dtos.responses.ExceptionMessageResponse;
+import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.utils.ResourceBundleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +12,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -30,10 +29,16 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(value = { BadCredentialsException.class, UsernameNotFoundException.class })
-    protected ResponseEntity<ExceptionMessageResponse> handleConflict(RuntimeException ex) {
+    protected ResponseEntity<CommonMessageResponse> handleConflict(RuntimeException ex) {
         String message = resourceBundleUtil.getMessage("userLogin.badCredentials");
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-            .body(new ExceptionMessageResponse(message));
+            .body(new CommonMessageResponse(message));
+    }
+
+    @ExceptionHandler(value = { IllegalArgumentException.class })
+    protected ResponseEntity<CommonMessageResponse> handleInvalidData(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new CommonMessageResponse(ex.getMessage()));
     }
 
     @Override

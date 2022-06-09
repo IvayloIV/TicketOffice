@@ -1,12 +1,10 @@
 package bg.tuvarna.ticketoffice.domain.entities;
 
-import bg.tuvarna.ticketoffice.domain.enums.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -33,8 +31,8 @@ public class Event {
     @Column(name = "tickets_per_user")
     private Integer ticketsPerUser;
 
-    @Column(name = "date", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "start_date", nullable = false)
+    private LocalDateTime startDate;
 
     @Column(name = "location", nullable = false)
     private String location;

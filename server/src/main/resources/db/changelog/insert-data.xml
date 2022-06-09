@@ -44,7 +44,7 @@
             <column name="places_type" value="Full Rocker"/>
             <column name="price" valueNumeric="10.5"/>
             <column name="tickets_per_user" valueNumeric="5"/>
-            <column name="date" valueDate="2022-09-01 14:00:00"/>
+            <column name="start_date" valueDate="2022-09-01 14:00:00"/>
             <column name="location" value="Paradise Center, Sofia"/>
             <column name="user_id" valueNumeric="2"/>
         </insert>
@@ -54,7 +54,7 @@
             <column name="places_type" value="Vip Kids Sofa"/>
             <column name="price" valueNumeric="30"/>
             <column name="tickets_per_user" valueNumeric="10"/>
-            <column name="date" valueDate="2022-09-05 15:30:00"/>
+            <column name="start_date" valueDate="2022-09-05 15:30:00"/>
             <column name="location" value="Grand Mall, Varna"/>
             <column name="user_id" valueNumeric="2"/>
         </insert>
@@ -64,7 +64,7 @@
             <column name="places_type" value="Vip Cinema Seating"/>
             <column name="price" valueNumeric="18"/>
             <column name="tickets_per_user" valueNumeric="3"/>
-            <column name="date" valueDate="2022-09-11 20:10:00"/>
+            <column name="start_date" valueDate="2022-09-11 20:10:00"/>
             <column name="location" value="Terra Mall, Gabrovo"/>
             <column name="user_id" valueNumeric="2"/>
         </insert>
@@ -74,7 +74,7 @@
             <column name="places_type" value="Planetarium Seating"/>
             <column name="price" valueNumeric="5.99"/>
             <column name="tickets_per_user" valueNumeric="1"/>
-            <column name="date" valueDate="2022-09-16 11:30:00"/>
+            <column name="start_date" valueDate="2022-09-16 11:30:00"/>
             <column name="location" value="Terra Mall, Gabrovo"/>
             <column name="user_id" valueNumeric="3"/>
         </insert>
@@ -84,7 +84,7 @@
             <column name="places_type" value="Premium Glider"/>
             <column name="price" valueNumeric="25"/>
             <column name="tickets_per_user" valueNumeric="8"/>
-            <column name="date" valueDate="2022-09-22 17:00:00"/>
+            <column name="start_date" valueDate="2022-09-22 17:00:00"/>
             <column name="location" value="Paradise Center, Sofia"/>
             <column name="user_id" valueNumeric="3"/>
         </insert>

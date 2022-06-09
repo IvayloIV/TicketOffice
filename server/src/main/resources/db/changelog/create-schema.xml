@@ -39,7 +39,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="tickets_per_user" type="int"/>
-            <column name="date" type="datetime">
+            <column name="start_date" type="datetime">
                 <constraints nullable="false"/>
             </column>
             <column name="location" type="varchar(255)">
