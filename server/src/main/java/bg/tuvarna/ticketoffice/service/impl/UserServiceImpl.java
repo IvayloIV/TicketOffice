@@ -16,14 +16,13 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotBlank;
+import java.util.function.Function;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -92,8 +91,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<UserProfileResponse> profile(User details) {
-        return ResponseEntity.ok(userRepository.getOrganiserProfile(details.getId()));
+    public ResponseEntity<UserProfileResponse> profile(User user) {
+        Function<Long, UserProfileResponse> getUserProfile;
+
+        if (user.getRole().equals(Role.ORGANISER)) {
+            getUserProfile = userRepository::getOrganiserProfile;
+        } else {
+            getUserProfile = userRepository::getDistributorProfile;
+        }
+
+        return ResponseEntity.ok(getUserProfile.apply(user.getId()));
     }
 
     @Override

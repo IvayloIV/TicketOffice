@@ -35,4 +35,24 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "from User u " +
             " where u.id = :id")
     public UserProfileResponse getOrganiserProfile(@Param("id") Long id);
+
+    @Query("select new bg.tuvarna.ticketoffice.domain.dtos.responses.UserProfileResponse( " +
+            "   u.id, " +
+            "   u.name, " +
+            "   u.role, " +
+            "   (select sum(t.ticketsCount * t.event.price) from Ticket t " +
+            "       where t.user.id = u.id), " +
+            "   (select count(d.id.event.id) from Distributor d " +
+            "       where d.id.user.id = u.id), " +
+            "   (select count(d.id.event.id) from Distributor d " +
+            "       where d.id.user.id = u.id " +
+            "        and d.id.event.startDate > current_timestamp), " +
+            "   (select sum(t.ticketsCount) from Ticket t " +
+            "       where t.user.id = u.id), " +
+            "   (select avg(r.value) from Rating r " +
+            "       where r.id.userTo.id = u.id) " +
+            ") " +
+            "from User u " +
+            " where u.id = :id")
+    public UserProfileResponse getDistributorProfile(@Param("id") Long id);
 }
