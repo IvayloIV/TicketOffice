@@ -1,14 +1,11 @@
 package bg.tuvarna.ticketoffice.web.controllers;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
-import bg.tuvarna.ticketoffice.domain.dtos.requests.LoginRequest;
-import bg.tuvarna.ticketoffice.domain.dtos.requests.RegisterRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
-import bg.tuvarna.ticketoffice.domain.dtos.responses.LoginResponse;
-import bg.tuvarna.ticketoffice.domain.dtos.responses.UserProfileResponse;
+import bg.tuvarna.ticketoffice.domain.dtos.responses.EventDetailsResponse;
 import bg.tuvarna.ticketoffice.domain.entities.User;
 import bg.tuvarna.ticketoffice.service.EventService;
-import bg.tuvarna.ticketoffice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -31,5 +28,16 @@ public class EventController {
     public ResponseEntity<CommonMessageResponse> create(@Valid @RequestBody CreateEventRequest createEventRequest,
                                                         Authentication authentication) {
         return eventService.create(createEventRequest, (User) authentication.getPrincipal());
+    }
+
+    @PutMapping(value = "/edit")
+    public ResponseEntity<CommonMessageResponse> edit(@Valid @RequestBody EditEventRequest editEventRequest,
+                                                        Authentication authentication) {
+        return eventService.edit(editEventRequest, (User) authentication.getPrincipal());
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<EventDetailsResponse> details(@PathVariable Long id, Authentication authentication) {
+        return eventService.details(id, (User) authentication.getPrincipal());
     }
 }

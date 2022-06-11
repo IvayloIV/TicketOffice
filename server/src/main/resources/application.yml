@@ -13,6 +13,9 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     drop-first: false
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
 
 jwt:
   secret: tick3tsecr1t

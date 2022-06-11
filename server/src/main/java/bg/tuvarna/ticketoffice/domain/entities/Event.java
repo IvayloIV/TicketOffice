@@ -42,6 +42,6 @@ public class Event {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "id.user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "id.event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Distributor> distributors;
 }

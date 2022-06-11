@@ -1,7 +1,9 @@
 package bg.tuvarna.ticketoffice.service.impl;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
+import bg.tuvarna.ticketoffice.domain.dtos.responses.EventDetailsResponse;
 import bg.tuvarna.ticketoffice.domain.entities.Distributor;
 import bg.tuvarna.ticketoffice.domain.entities.DistributorId;
 import bg.tuvarna.ticketoffice.domain.entities.Event;
@@ -14,6 +16,7 @@ import bg.tuvarna.ticketoffice.utils.ResourceBundleUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +45,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public ResponseEntity<CommonMessageResponse> create(CreateEventRequest createEventRequest, User user) {
-        if (eventRepository.existsByType(createEventRequest.getType())) {
+        if (eventRepository.countByType(createEventRequest.getType()) > 0) {
             throw new IllegalArgumentException(resourceBundleUtil.getMessage("eventCreate.typeAlreadyExists"));
         }
 
@@ -63,6 +66,65 @@ public class EventServiceImpl implements EventService {
         eventRepository.save(event);
 
         String eventCreatedMessage = resourceBundleUtil.getMessage("eventCreate.successful");
-        return ResponseEntity.ok(new CommonMessageResponse(eventCreatedMessage));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new CommonMessageResponse(eventCreatedMessage));
+    }
+
+    @Override
+    public ResponseEntity<CommonMessageResponse> edit(EditEventRequest eventRequest, User user) {
+        Event savedEvent = eventRepository.findById(eventRequest.getId())
+            .orElseThrow(() -> new IllegalArgumentException(resourceBundleUtil.getMessage("eventEdit.notFound")));
+
+        if (!savedEvent.getUser().getId().equals(user.getId())) {
+            throw new IllegalArgumentException(resourceBundleUtil.getMessage("eventEdit.invalidUser"));
+        }
+
+        if (!savedEvent.getType().equals(eventRequest.getType())) {
+            if (eventRepository.countByType(eventRequest.getType()) > 0) {
+                throw new IllegalArgumentException(resourceBundleUtil.getMessage("eventEdit.typeAlreadyExists"));
+            }
+            savedEvent.setType(eventRequest.getType());
+        }
+
+        savedEvent.getDistributors().clear();
+        eventRequest.getDistributorIds()
+            .forEach(d -> {
+                Optional<User> userOptional = userRepository.findById(d);
+                User distributorUser = userOptional.orElseThrow(() ->
+                        new IllegalArgumentException(resourceBundleUtil.getMessage("eventEdit.distributorNotFound", d)));
+
+                DistributorId distributorId = new DistributorId(distributorUser, savedEvent);
+                savedEvent.getDistributors().add(new Distributor(distributorId));
+            });
+
+        savedEvent.setPlacesCount(eventRequest.getPlacesCount());
+        savedEvent.setPlacesType(eventRequest.getPlacesType());
+        savedEvent.setPrice(eventRequest.getPrice());
+        savedEvent.setTicketsPerUser(eventRequest.getTicketsPerUser());
+        savedEvent.setStartDate(eventRequest.getStartDate());
+        savedEvent.setLocation(eventRequest.getLocation());
+        eventRepository.save(savedEvent);
+
+        String eventUpdatedMessage = resourceBundleUtil.getMessage("eventEdit.successful");
+        return ResponseEntity.ok(new CommonMessageResponse(eventUpdatedMessage));
+    }
+
+    @Override
+    public ResponseEntity<EventDetailsResponse> details(Long eventId, User user) {
+        Event event = eventRepository.findById(eventId)
+            .orElseThrow(() -> new IllegalArgumentException(resourceBundleUtil.getMessage("eventDetails.notFound")));
+
+        if (!event.getUser().getId().equals(user.getId())) {
+            throw new IllegalArgumentException(resourceBundleUtil.getMessage("eventDetails.invalidUser"));
+        }
+
+        List<Long> distributorIds = event.getDistributors()
+            .stream()
+            .map(e -> e.getId().getUser().getId())
+            .collect(Collectors.toList());
+
+        EventDetailsResponse eventDetails = modelMapper.map(event, EventDetailsResponse.class);
+        eventDetails.setDistributorIds(distributorIds);
+        return ResponseEntity.ok(eventDetails);
     }
 }
