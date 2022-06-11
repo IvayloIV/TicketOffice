@@ -16,4 +16,4 @@ spring:
 
 jwt:
   secret: tick3tsecr1t
-  validity-minutes: 5
+  validity-minutes: 20
