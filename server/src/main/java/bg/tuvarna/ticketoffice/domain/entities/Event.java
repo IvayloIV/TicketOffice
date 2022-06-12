@@ -1,7 +1,9 @@
 package bg.tuvarna.ticketoffice.domain.entities;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,6 +11,8 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@ToString(exclude="distributors")
+@EqualsAndHashCode(exclude="distributors")
 @Entity
 @Table(name = "event")
 public class Event {

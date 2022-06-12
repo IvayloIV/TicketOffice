@@ -50,6 +50,7 @@ public class WebSecurityConfig {
                 .antMatchers("/user/register").hasAuthority(Role.ADMIN.name())
                 .antMatchers("/user/profile").hasAnyAuthority(Role.ORGANISER.name(), Role.DISTRIBUTOR.name())
                 .antMatchers("/event/create", "/event/edit", "/event/details").hasAnyAuthority(Role.ORGANISER.name())
+                .antMatchers("/ticket/create").hasAnyAuthority(Role.DISTRIBUTOR.name())
                 .anyRequest().authenticated()
             .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)

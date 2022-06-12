@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface DistributorRepository extends JpaRepository<Distributor, DistributorId> {
 
-    public Optional<Distributor> findById_User_Id(Long userId);
+    public Optional<Distributor> findById_User_IdAndId_Event_Id(Long userId, Long eventId);
 }
