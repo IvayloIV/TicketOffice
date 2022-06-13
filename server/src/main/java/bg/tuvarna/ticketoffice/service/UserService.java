@@ -1,6 +1,7 @@
 package bg.tuvarna.ticketoffice.service;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.LoginRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.RateUserRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.RegisterRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.LoginResponse;
@@ -16,4 +17,8 @@ public interface UserService extends UserDetailsService {
     public ResponseEntity<CommonMessageResponse> register(RegisterRequest registerRequest);
 
     public ResponseEntity<UserProfileResponse> profile(User details);
+
+    public ResponseEntity<UserProfileResponse> details(Long userId);
+
+    public ResponseEntity<CommonMessageResponse> rate(RateUserRequest rateUserRequest, User user);
 }

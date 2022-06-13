@@ -1,13 +1,17 @@
 package bg.tuvarna.ticketoffice.service.impl;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.LoginRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.RateUserRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.RegisterRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.LoginResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.UserProfileResponse;
+import bg.tuvarna.ticketoffice.domain.entities.Rating;
+import bg.tuvarna.ticketoffice.domain.entities.RatingId;
 import bg.tuvarna.ticketoffice.domain.entities.User;
 import bg.tuvarna.ticketoffice.domain.enums.Role;
 import bg.tuvarna.ticketoffice.jwtutil.JwtTokenUtil;
+import bg.tuvarna.ticketoffice.repository.RatingRepository;
 import bg.tuvarna.ticketoffice.repository.UserRepository;
 import bg.tuvarna.ticketoffice.service.UserService;
 import bg.tuvarna.ticketoffice.utils.ResourceBundleUtil;
@@ -28,6 +32,7 @@ import java.util.function.Function;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final RatingRepository ratingRepository;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
     private final ResourceBundleUtil resourceBundleUtil;
@@ -36,11 +41,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
                            @Lazy AuthenticationManager authenticationManager,
+                           RatingRepository ratingRepository,
                            JwtTokenUtil jwtTokenUtil,
                            ResourceBundleUtil resourceBundleUtil,
                            @Lazy PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.authenticationManager = authenticationManager;
+        this.ratingRepository = ratingRepository;
         this.jwtTokenUtil = jwtTokenUtil;
         this.resourceBundleUtil = resourceBundleUtil;
         this.passwordEncoder = passwordEncoder;
@@ -101,6 +108,44 @@ public class UserServiceImpl implements UserService {
         }
 
         return ResponseEntity.ok(getUserProfile.apply(user.getId()));
+    }
+
+    @Override
+    public ResponseEntity<UserProfileResponse> details(Long userId) {
+        if (!userRepository.existsByIdAndRole(userId, Role.DISTRIBUTOR)) {
+            throw new IllegalArgumentException(
+                    resourceBundleUtil.getMessage("userDetails.invalidDistributor", userId));
+        }
+
+        UserProfileResponse distributorProfile = userRepository.getDistributorProfile(userId);
+        return ResponseEntity.ok(distributorProfile);
+    }
+
+    @Override
+    public ResponseEntity<CommonMessageResponse> rate(RateUserRequest rateUserRequest, User user) {
+        Rating rating = ratingRepository
+                .getById_UserFrom_IdAndId_UserTo_Id(user.getId(), rateUserRequest.getUserId())
+                .orElse(null);
+        if (rating != null) {
+            Integer rate = rating.getValue();
+            throw new IllegalArgumentException(resourceBundleUtil.getMessage("userRate.alreadyEstimated", rate));
+        }
+
+        User distributor = userRepository.findById(rateUserRequest.getUserId())
+            .orElseThrow(() -> new IllegalArgumentException(resourceBundleUtil.getMessage("userRate.distributorNotFound")));
+
+        RatingId ratingId = new RatingId();
+        ratingId.setUserFrom(user);
+        ratingId.setUserTo(distributor);
+
+        Rating newRating = new Rating();
+        newRating.setId(ratingId);
+        newRating.setValue(rateUserRequest.getRating());
+        ratingRepository.save(newRating);
+
+        String successfulMessage = resourceBundleUtil.getMessage("userRate.successful");
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new CommonMessageResponse(successfulMessage));
     }
 
     @Override

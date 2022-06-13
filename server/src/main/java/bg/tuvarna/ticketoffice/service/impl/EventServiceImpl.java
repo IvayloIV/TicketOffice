@@ -4,10 +4,12 @@ import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventDetailsResponse;
+import bg.tuvarna.ticketoffice.domain.dtos.responses.EventListResponse;
 import bg.tuvarna.ticketoffice.domain.entities.Distributor;
 import bg.tuvarna.ticketoffice.domain.entities.DistributorId;
 import bg.tuvarna.ticketoffice.domain.entities.Event;
 import bg.tuvarna.ticketoffice.domain.entities.User;
+import bg.tuvarna.ticketoffice.domain.enums.Role;
 import bg.tuvarna.ticketoffice.repository.DistributorRepository;
 import bg.tuvarna.ticketoffice.repository.EventRepository;
 import bg.tuvarna.ticketoffice.repository.UserRepository;
@@ -28,16 +30,19 @@ import java.util.stream.Collectors;
 public class EventServiceImpl implements EventService {
 
     private final EventRepository eventRepository;
+    private final DistributorRepository distributorRepository;
     private final UserRepository userRepository;
     private final ResourceBundleUtil resourceBundleUtil;
     private final ModelMapper modelMapper;
 
     @Autowired
     public EventServiceImpl(EventRepository eventRepository,
+                            DistributorRepository distributorRepository,
                             UserRepository userRepository,
                             ResourceBundleUtil resourceBundleUtil,
                             ModelMapper modelMapper) {
         this.eventRepository = eventRepository;
+        this.distributorRepository = distributorRepository;
         this.userRepository = userRepository;
         this.resourceBundleUtil = resourceBundleUtil;
         this.modelMapper = modelMapper;
@@ -126,5 +131,15 @@ public class EventServiceImpl implements EventService {
         EventDetailsResponse eventDetails = modelMapper.map(event, EventDetailsResponse.class);
         eventDetails.setDistributorIds(distributorIds);
         return ResponseEntity.ok(eventDetails);
+    }
+
+    @Override
+    public ResponseEntity<List<EventListResponse>> getByDistributor(User user) {
+        List<EventListResponse> eventsResponse = distributorRepository.findById_User_Id(user.getId())
+            .stream()
+            .map(d -> modelMapper.map(d.getId().getEvent(), EventListResponse.class))
+            .collect(Collectors.toList());
+
+        return ResponseEntity.ok(eventsResponse);
     }
 }

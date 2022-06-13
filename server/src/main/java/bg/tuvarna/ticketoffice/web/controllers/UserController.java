@@ -1,6 +1,7 @@
 package bg.tuvarna.ticketoffice.web.controllers;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.LoginRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.RateUserRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.RegisterRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.LoginResponse;
@@ -38,5 +39,15 @@ public class UserController {
     @GetMapping(value = "/profile")
     public ResponseEntity<UserProfileResponse> profile(Authentication authentication) {
         return userService.profile((User) authentication.getPrincipal());
+    }
+
+    @GetMapping(value = "/details/{id}")
+    public ResponseEntity<UserProfileResponse> details(@PathVariable Long id) {
+        return userService.details(id);
+    }
+
+    @PostMapping(value = "/rate")
+    public ResponseEntity<CommonMessageResponse> rate(@RequestBody RateUserRequest rateUserRequest, Authentication authentication) {
+        return userService.rate(rateUserRequest, (User) authentication.getPrincipal());
     }
 }

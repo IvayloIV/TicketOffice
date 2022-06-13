@@ -2,6 +2,7 @@ package bg.tuvarna.ticketoffice.repository;
 
 import bg.tuvarna.ticketoffice.domain.dtos.responses.UserProfileResponse;
 import bg.tuvarna.ticketoffice.domain.entities.User;
+import bg.tuvarna.ticketoffice.domain.enums.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +16,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public Optional<User> findByName(String username);
 
     public boolean existsByNameIgnoreCase(String name);
+
+    public boolean existsByIdAndRole(Long userId, Role role);
 
     @Query("select new bg.tuvarna.ticketoffice.domain.dtos.responses.UserProfileResponse( " +
             "   u.id, " +
