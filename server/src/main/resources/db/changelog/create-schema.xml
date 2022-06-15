@@ -23,6 +23,10 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <sql>
+            ALTER TABLE ticket_user ADD CONSTRAINT name_length_check CHECK (length(name) &gt;= 3);
+            ALTER TABLE ticket_user ADD CONSTRAINT password_length_check CHECK (length(user_password) &gt;= 3);
+        </sql>
 
         <createTable tableName="event">
             <column name="id" type="bigint" autoIncrement="true">
@@ -49,6 +53,14 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <sql>
+            ALTER TABLE event ADD CONSTRAINT type_length_check CHECK (length(type) &gt;= 2);
+            ALTER TABLE event ADD CONSTRAINT places_count_check CHECK (places_count &gt;= 5);
+            ALTER TABLE event ADD CONSTRAINT places_type_length_check CHECK (length(places_type) &gt;= 3);
+            ALTER TABLE event ADD CONSTRAINT price_check CHECK (price &gt;= 0.5);
+            ALTER TABLE event ADD CONSTRAINT tickets_per_user_check CHECK (tickets_per_user &gt;= 1);
+            ALTER TABLE event ADD CONSTRAINT location_length_check CHECK (length(location) &gt;= 2);
+        </sql>
 
         <addForeignKeyConstraint baseTableName="event" baseColumnNames="user_id" constraintName="fk_event_user"
                                  referencedTableName="ticket_user" referencedColumnNames="id"/>
@@ -91,6 +103,11 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <sql>
+            ALTER TABLE ticket ADD CONSTRAINT customer_ucn_length_check CHECK (length(customer_ucn) = 10);
+            ALTER TABLE ticket ADD CONSTRAINT customer_name_length_check CHECK (length(customer_name) &gt;= 3);
+            ALTER TABLE ticket ADD CONSTRAINT tickets_count_check CHECK (tickets_count &gt;= 1);
+        </sql>
 
         <addForeignKeyConstraint baseTableName="ticket" baseColumnNames="distributor_id" constraintName="fk_ticket_user"
                                  referencedTableName="ticket_user" referencedColumnNames="id"/>
