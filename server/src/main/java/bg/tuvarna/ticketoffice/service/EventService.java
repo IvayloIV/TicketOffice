@@ -1,9 +1,6 @@
 package bg.tuvarna.ticketoffice.service;
 
-import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
-import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
-import bg.tuvarna.ticketoffice.domain.dtos.requests.LoginRequest;
-import bg.tuvarna.ticketoffice.domain.dtos.requests.RegisterRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.*;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.*;
 import bg.tuvarna.ticketoffice.domain.entities.User;
 import org.springframework.http.ResponseEntity;
@@ -20,4 +17,6 @@ public interface EventService {
     public ResponseEntity<EventDetailsResponse> details(Long eventId, User user);
 
     public ResponseEntity<List<EventListResponse>> getByDistributor(User user);
+
+    public ResponseEntity<List<EventListResponse>> list(EventListFilterRequest filterRequest, User user);
 }

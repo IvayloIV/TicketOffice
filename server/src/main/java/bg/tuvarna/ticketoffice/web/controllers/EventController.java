@@ -2,6 +2,7 @@ package bg.tuvarna.ticketoffice.web.controllers;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.EventListFilterRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventDetailsResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventListResponse;
@@ -46,5 +47,11 @@ public class EventController {
     @GetMapping(value = "/distributor")
     public ResponseEntity<List<EventListResponse>> getByDistributor(Authentication authentication) {
         return eventService.getByDistributor((User) authentication.getPrincipal());
+    }
+
+    @GetMapping(value = "/list")
+    public ResponseEntity<List<EventListResponse>> getList(EventListFilterRequest filterRequest,
+                                                           Authentication authentication) {
+        return eventService.list(filterRequest, (User) authentication.getPrincipal());
     }
 }

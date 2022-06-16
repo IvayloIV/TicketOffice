@@ -2,6 +2,7 @@ package bg.tuvarna.ticketoffice.service.impl;
 
 import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
+import bg.tuvarna.ticketoffice.domain.dtos.requests.EventListFilterRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventDetailsResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventListResponse;
@@ -141,5 +142,18 @@ public class EventServiceImpl implements EventService {
             .collect(Collectors.toList());
 
         return ResponseEntity.ok(eventsResponse);
+    }
+
+    @Override
+    public ResponseEntity<List<EventListResponse>> list(EventListFilterRequest filterRequest, User user) {
+        List<EventListResponse> eventList = null;
+
+        if (user.getRole().equals(Role.ORGANISER)) {
+            eventList = eventRepository.getOrganiserEvents(filterRequest, user.getId());
+        } else if (user.getRole().equals(Role.DISTRIBUTOR)) {
+            eventList = eventRepository.getDistributorEvents(filterRequest, user.getId());
+        }
+
+        return ResponseEntity.ok(eventList);
     }
 }
