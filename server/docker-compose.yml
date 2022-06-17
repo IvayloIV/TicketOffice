@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  dboracle:
+    container_name: oracledb
+    image: gvenzl/oracle-xe
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PASSWORD: 1234
+      APP_USER: ticketoffice
+      APP_USER_PASSWORD: 1234
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh"]
+      interval: 20s
+      timeout: 10s
+      retries: 30
+  app:
+    container_name: ticketoffice-cont
+    image: ticketoffice-img
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      dboracle:
+        condition: service_healthy

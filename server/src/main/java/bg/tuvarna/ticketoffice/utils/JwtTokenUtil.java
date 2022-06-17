@@ -1,4 +1,4 @@
-package bg.tuvarna.ticketoffice.jwtutil;
+package bg.tuvarna.ticketoffice.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

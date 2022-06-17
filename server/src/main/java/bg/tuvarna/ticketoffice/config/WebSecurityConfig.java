@@ -1,8 +1,8 @@
 package bg.tuvarna.ticketoffice.config;
 
 import bg.tuvarna.ticketoffice.domain.enums.Role;
-import bg.tuvarna.ticketoffice.jwtutil.JwtAuthenticationEntryPoint;
-import bg.tuvarna.ticketoffice.jwtutil.JwtRequestFilter;
+import bg.tuvarna.ticketoffice.jwtauth.JwtAuthenticationEntryPoint;
+import bg.tuvarna.ticketoffice.jwtauth.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

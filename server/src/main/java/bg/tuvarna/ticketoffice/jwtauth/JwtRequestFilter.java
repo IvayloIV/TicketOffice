@@ -1,5 +1,6 @@
-package bg.tuvarna.ticketoffice.jwtutil;
+package bg.tuvarna.ticketoffice.jwtauth;
 
+import bg.tuvarna.ticketoffice.utils.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

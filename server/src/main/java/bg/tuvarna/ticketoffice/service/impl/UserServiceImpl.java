@@ -10,7 +10,7 @@ import bg.tuvarna.ticketoffice.domain.entities.Rating;
 import bg.tuvarna.ticketoffice.domain.entities.RatingId;
 import bg.tuvarna.ticketoffice.domain.entities.User;
 import bg.tuvarna.ticketoffice.domain.enums.Role;
-import bg.tuvarna.ticketoffice.jwtutil.JwtTokenUtil;
+import bg.tuvarna.ticketoffice.utils.JwtTokenUtil;
 import bg.tuvarna.ticketoffice.repository.RatingRepository;
 import bg.tuvarna.ticketoffice.repository.UserRepository;
 import bg.tuvarna.ticketoffice.service.UserService;
