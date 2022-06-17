@@ -182,24 +182,19 @@
         </insert>
 
         <insert tableName="notification">
-            <column name="message" value="Organiser with name 'Ivan' assign you new event 'Spider-Man: No Way Home'."/>
+            <column name="message" value="Organiser with name &quot;Ivan&quot; assign you new event &quot;Spider-Man: No Way Home&quot;."/>
         </insert>
         <insert tableName="notification">
-            <column name="message" value="Only 22 tickets left for 'Spider-Man: No Way Home' event."/>
+            <column name="message" value="22/30 tickets were sold for &quot;Spider-Man: No Way Home&quot; event."/>
         </insert>
         <insert tableName="notification">
-            <column name="message" value="One day until 'Furious 7' starts and 50 tickets are not sold."/>
+            <column name="message" value="One day until &quot;Furious 7&quot; starts and 50 tickets are not sold."/>
         </insert>
 
         <insert tableName="user_notifications">
             <column name="user_id" valueNumeric="4"/>
             <column name="notification_id" valueNumeric="1"/>
             <column name="seen" valueBoolean="false"/>
-        </insert>
-        <insert tableName="user_notifications">
-            <column name="user_id" valueNumeric="4"/>
-            <column name="notification_id" valueNumeric="2"/>
-            <column name="seen" valueBoolean="true"/>
         </insert>
         <insert tableName="user_notifications">
             <column name="user_id" valueNumeric="2"/>

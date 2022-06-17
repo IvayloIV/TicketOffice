@@ -15,4 +15,6 @@ public interface DistributorRepository extends JpaRepository<Distributor, Distri
     public Optional<Distributor> findById_User_IdAndId_Event_Id(Long userId, Long eventId);
 
     public List<Distributor> findById_User_Id(Long userId);
+
+    public List<Distributor> findById_Event_Id(Long eventId);
 }

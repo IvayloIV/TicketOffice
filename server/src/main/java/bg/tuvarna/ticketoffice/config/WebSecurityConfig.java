@@ -48,7 +48,7 @@ public class WebSecurityConfig {
             .authorizeRequests()
                 .antMatchers("/user/login").permitAll()
                 .antMatchers("/user/register").hasAuthority(Role.ADMIN.name())
-                .antMatchers("/user/profile", "/user/details/*", "/event/list").hasAnyAuthority(Role.ORGANISER.name(), Role.DISTRIBUTOR.name())
+                .antMatchers("/user/profile", "/user/details/*", "/event/list", "/notification/count", "/notification/list").hasAnyAuthority(Role.ORGANISER.name(), Role.DISTRIBUTOR.name())
                 .antMatchers("/event/create", "/event/edit", "/event/details/*", "/user/rate", "/distributor/list").hasAnyAuthority(Role.ORGANISER.name())
                 .antMatchers("/ticket/create", "/event/distributor").hasAnyAuthority(Role.DISTRIBUTOR.name())
                 .anyRequest().authenticated()

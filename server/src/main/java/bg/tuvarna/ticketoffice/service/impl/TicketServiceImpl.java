@@ -6,7 +6,6 @@ import bg.tuvarna.ticketoffice.domain.entities.*;
 import bg.tuvarna.ticketoffice.repository.DistributorRepository;
 import bg.tuvarna.ticketoffice.repository.EventRepository;
 import bg.tuvarna.ticketoffice.repository.TicketRepository;
-import bg.tuvarna.ticketoffice.repository.UserRepository;
 import bg.tuvarna.ticketoffice.service.TicketService;
 import bg.tuvarna.ticketoffice.utils.ResourceBundleUtil;
 import org.modelmapper.ModelMapper;
@@ -15,11 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class TicketServiceImpl implements TicketService {
@@ -62,6 +58,11 @@ public class TicketServiceImpl implements TicketService {
         int boughtTicket = ticketsByCustomer.stream().mapToInt(Ticket::getTicketsCount).sum();
         if (boughtTicket + createTicketRequest.getTicketsCount() > event.getTicketsPerUser()) {
             throw new IllegalArgumentException(resourceBundleUtil.getMessage("ticketCreate.invalidTicketCount", event.getTicketsPerUser()));
+        }
+
+        Long leftTickets = eventRepository.leftEventTickets(event.getId());
+        if (createTicketRequest.getTicketsCount() > leftTickets) {
+            throw new IllegalArgumentException(resourceBundleUtil.getMessage("ticketCreate.soldTicketsError", leftTickets));
         }
 
         ticket.setId(null);
