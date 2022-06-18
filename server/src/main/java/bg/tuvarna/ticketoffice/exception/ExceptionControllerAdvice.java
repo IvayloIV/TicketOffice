@@ -52,6 +52,6 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
 
-        return ResponseEntity.badRequest().body(errors);
+        return ResponseEntity.unprocessableEntity().body(errors);
     }
 }
