@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.HomeActivity">
+
+    <Button
+        android:id="@+id/home_btn_logout"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/home_btn_logout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/home_btn_notification"
+        android:layout_width="175dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/home_btn_notification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/home_btn_profile"
+        android:layout_width="160dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="147dp"
+        android:text="@string/home_btn_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn_logout" />
+
+    <Button
+        android:id="@+id/home_btn_distributor_list"
+        android:layout_width="160dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/home_btn_distributor_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn_create" />
+
+    <Button
+        android:id="@+id/home_btn_create"
+        android:layout_width="160dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/home_btn_create_event"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn_organizer_list" />
+
+    <Button
+        android:id="@+id/home_btn_organizer_list"
+        android:layout_width="160dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/home_btn_organizer_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn_profile" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

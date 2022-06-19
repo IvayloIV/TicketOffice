@@ -1,15 +1,14 @@
 package bg.tuvarna.ticketoffice.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,10 +17,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 
 import bg.tuvarna.ticketoffice.R;
+import bg.tuvarna.ticketoffice.domain.enums.Role;
 import bg.tuvarna.ticketoffice.domain.models.requests.LoginRequest;
-import bg.tuvarna.ticketoffice.domain.models.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.models.responses.LoginResponse;
-import bg.tuvarna.ticketoffice.services.HttpClient;
 import bg.tuvarna.ticketoffice.services.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,10 +35,6 @@ public class LoginActivity extends BaseActivity {
     private TextView tvUsernameError;
     private TextView tvPasswordError;
 
-//    private ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
-//            new ActivityResultContracts.StartActivityForResult(),
-//            LoginActivity.this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +49,9 @@ public class LoginActivity extends BaseActivity {
 
         if (Debug.isDebuggerConnected()) {
             SetDebugInfo();
+        } else {
+            etUserLoginInput.setText("Ivan");
+            etPassword.setText("1234");
         }
     }
 
@@ -89,7 +86,7 @@ public class LoginActivity extends BaseActivity {
         loginRequest.setPassword(password);
 
         UserService userService = getClient().getUserService();
-        Call<LoginResponse> user = userService.create(loginRequest);
+        Call<LoginResponse> user = userService.login(loginRequest);
         user.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -99,8 +96,16 @@ public class LoginActivity extends BaseActivity {
                     LoginResponse loginResponse = response.body();
                     getClient().setUserRole(loginResponse.getRole());
                     getClient().setJwt(loginResponse.getJwtToken());
-                    System.out.println(loginResponse.getRole());
-                    // Intent to another page
+
+                    Class<? extends BaseActivity> activity;
+                    if (loginResponse.getRole().equals(Role.ADMIN)) {
+                        activity = RegisterActivity.class;
+                    } else {
+                        activity = HomeActivity.class;
+                    }
+
+                    Intent intent = new Intent(getApplicationContext(), activity);
+                    startActivity(intent);
                 } else if (code == 422) {
                     showErrorInputMessages(response);
                 } else if (code == HttpURLConnection.HTTP_UNAUTHORIZED) {
@@ -113,20 +118,6 @@ public class LoginActivity extends BaseActivity {
                 handleFailureRequest();
             }
         });
-
-
-//        ServerRequest<User> request = new ServerRequest<>(OperationType.USER_LOGIN);
-//        request.setData(model);
-//        getNetClient().sendRequest(request);
-
-//        if (response.getOperationType() == OperationType.USER_LOGIN) {
-//        CompleteActivity(response);
-//        }
-
-//        Intent intent = new Intent(this, HomeActivity.class);
-//        startActivity( intent );
-//
-//        finish();
     }
 
     private void showErrorInputMessages(Response<LoginResponse> response) {

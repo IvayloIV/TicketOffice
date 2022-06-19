@@ -5,8 +5,20 @@
     <string name="login_tv_password"> Password </string>
     <string name="login_et_username"> e.g myusername12 </string>
     <string name="login_btn_login"> Login </string>
-    <string name="login_tv_register"> <u>Don\'t have an account? Signup</u> </string>
-    <string name="login_chb_remember"> Remember me </string>
-    <string name="login_error_username">Username should be at least 5 symbols.</string>
-    <string name="login_error_password">Password should be at least 3 symbols.</string>
+    <string name="reg_activity_name">Registration</string>
+    <string name="reg_tv_username"> Username </string>
+    <string name="reg_et_username"> e.g myusername12 </string>
+    <string name="reg_tv_password"> Password </string>
+    <string name="reg_tv_role"> Role </string>
+    <string name="reg_bt_logout"> Logout </string>
+    <string name="reg_btn_registration"> CREATE </string>
+    <string name="home_btn_logout"> Logout </string>
+    <string name="home_btn_profile"> My Profile </string>
+    <string name="home_btn_organizer_list"> Organizers </string>
+    <string name="home_btn_create_event"> Create event </string>
+    <string name="home_btn_create_ticket"> Create ticket </string>
+    <string name="home_btn_distributor_list"> Distributors </string>
+    <string name="home_btn_notification">Notifications: </string>
+    <string name="notification_fragment_title">Notifications: </string>
+    <string name="notification_fragment_btn_ok">OK</string>
 </resources>

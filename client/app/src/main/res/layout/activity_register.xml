@@ -4,10 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.RegisterActivity">
+
+    <Button
+        android:id="@+id/reg_bt_logout"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/reg_bt_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/login_error_password"
+        android:id="@+id/reg_error_password"
         android:layout_width="114dp"
         android:layout_height="16dp"
         android:textColor="@android:color/holo_red_dark"
@@ -17,10 +28,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_tv_password" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_tv_password" />
 
     <TextView
-        android:id="@+id/login_error_username"
+        android:id="@+id/reg_error_username"
         android:layout_width="114dp"
         android:layout_height="16dp"
         android:textColor="@android:color/holo_red_dark"
@@ -30,38 +41,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_tv_input" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_tv_username" />
 
     <Button
-        android:id="@+id/login_btn_login"
+        android:id="@+id/reg_btn_registration"
         android:layout_width="280dp"
         android:layout_height="60dp"
-        android:text="@string/login_btn_login"
+        android:text="@string/reg_btn_registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_error_password"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_sp_role"
+        app:layout_constraintVertical_bias="0.192" />
 
     <TextView
         android:id="@+id/TV_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/login_tv_password"
+        android:text="@string/reg_tv_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_error_username" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_error_username" />
+
+    <TextView
+        android:id="@+id/TV_Role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/reg_tv_role"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg_error_password" />
 
     <EditText
-        android:id="@+id/login_tv_input"
+        android:id="@+id/reg_tv_username"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="@string/login_et_username"
+        android:hint="@string/reg_et_username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
@@ -73,14 +95,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="@string/login_tv_username"
+        android:text="@string/reg_tv_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_tv_activity_name" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_tv_activity_name" />
 
     <EditText
-        android:id="@+id/login_tv_password"
+        android:id="@+id/reg_tv_password"
         android:layout_width="280dp"
         android:layout_height="40dp"
         android:layout_marginTop="4dp"
@@ -92,17 +114,26 @@
         app:layout_constraintTop_toBottomOf="@+id/TV_Password" />
 
     <TextView
-        android:id="@+id/login_tv_activity_name"
+        android:id="@+id/reg_tv_activity_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:text="@string/login_activity_name"
+        android:layout_marginTop="60dp"
+        android:text="@string/reg_activity_name"
         android:textAlignment="center"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/reg_bt_logout" />
+
+    <Spinner
+        android:id="@+id/reg_sp_role"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Role" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

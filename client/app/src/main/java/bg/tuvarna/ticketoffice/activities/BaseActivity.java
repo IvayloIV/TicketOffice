@@ -1,5 +1,6 @@
 package bg.tuvarna.ticketoffice.activities;
 
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import retrofit2.Response;
 
 public class BaseActivity extends AppCompatActivity {
 
-    private static final HttpClient client = new HttpClient();
+    private static final HttpClient client = HttpClient.getInstance();
 
     public HttpClient getClient() {
         return client;
@@ -29,8 +30,15 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void handleUnauthorized() {
+        logout();
         Toast.makeText(BaseActivity.this, "Session expired!", Toast.LENGTH_LONG).show();
-        // Intent to login page
+    }
+
+    public void logout() {
+        client.setJwt(null);
+        client.setUserRole(null);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 
     public void handleFailureRequest() {

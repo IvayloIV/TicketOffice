@@ -12,16 +12,18 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class HttpClient {
 
     private static final String PROTOCOL = "http";
-    private static final String IP = "192.168.0.101";
+    private static final String IP = "192.168.0.102";
     private static final String PORT = "8080";
+    private static HttpClient client;
 
     private final Converter<ResponseBody, CommonMessageResponse> converter;
     private final UserService userService;
+    private final NotificationService notificationService;
 
     private Role userRole;
     private String jwt;
 
-    public HttpClient() {
+    private HttpClient() {
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(String.format("%s://%s:%s/", PROTOCOL, IP, PORT))
             .addConverterFactory(JacksonConverterFactory.create())
@@ -30,6 +32,15 @@ public class HttpClient {
         converter = retrofit.responseBodyConverter(CommonMessageResponse.class, new Annotation[0]);
 
         userService = retrofit.create(UserService.class);
+        notificationService = retrofit.create(NotificationService.class);
+    }
+
+    public static synchronized HttpClient getInstance() {
+        if (client == null) {
+            client = new HttpClient();
+        }
+
+        return client;
     }
 
     public Converter<ResponseBody, CommonMessageResponse> getConverter() {
@@ -38,6 +49,10 @@ public class HttpClient {
 
     public UserService getUserService() {
         return userService;
+    }
+
+    public NotificationService getNotificationService() {
+        return notificationService;
     }
 
     public Role getUserRole() {
@@ -54,5 +69,9 @@ public class HttpClient {
 
     public void setJwt(String jwt) {
         this.jwt = jwt;
+    }
+
+    public String getAuthorizationHeader() {
+        return "Bearer " + jwt;
     }
 }
