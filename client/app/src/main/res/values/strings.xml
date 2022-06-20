@@ -21,4 +21,11 @@
     <string name="home_btn_notification">Notifications: </string>
     <string name="notification_fragment_title">Notifications: </string>
     <string name="notification_fragment_btn_ok">OK</string>
+    <string name="create_ticket_tv_title">Create Ticket</string>
+    <string name="create_ticket_tv_customer_ucn">Customer ucn</string>
+    <string name="create_ticket_tv_customer_name">Customer name</string>
+    <string name="create_ticket_tv_tickets_count">Tickets count</string>
+    <string name="create_ticket_tv_event">Event</string>
+    <string name="create_ticket_btn_create">Create</string>
+    <string name="create_ticket_btn_back">Back</string>
 </resources>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="user_roles">
-        <item>Organiser</item>
-        <item>Distributor</item>
-    </string-array>
-</resources>

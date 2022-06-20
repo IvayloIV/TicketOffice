@@ -37,11 +37,15 @@ public class BaseActivity extends AppCompatActivity {
     public void logout() {
         client.setJwt(null);
         client.setUserRole(null);
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
+        showPage(LoginActivity.class);
     }
 
     public void handleFailureRequest() {
         Toast.makeText(BaseActivity.this, "Something went wrong.", Toast.LENGTH_LONG).show();
+    }
+
+    public void showPage(Class<? extends AppCompatActivity> activityClass) {
+        Intent intent = new Intent(getApplicationContext(), activityClass);
+        startActivity(intent);
     }
 }

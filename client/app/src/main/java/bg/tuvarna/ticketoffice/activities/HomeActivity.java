@@ -1,6 +1,7 @@
 package bg.tuvarna.ticketoffice.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,10 +38,10 @@ public class HomeActivity extends BaseActivity {
         Role userRole = getClient().getUserRole();
 
         Button createButton = findViewById(R.id.home_btn_create);
-        createButton.setOnClickListener(view -> logout());
         if (userRole.equals(Role.ORGANISER)) {
             createButton.setText(R.string.home_btn_create_event);
         } else if (userRole.equals(Role.DISTRIBUTOR)) {
+            createButton.setOnClickListener(view -> showPage(CreateTicketActivity.class));
             createButton.setText(R.string.home_btn_create_ticket);
         }
 

@@ -13,8 +13,10 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.util.Arrays;
 
 import bg.tuvarna.ticketoffice.R;
+import bg.tuvarna.ticketoffice.domain.enums.Role;
 import bg.tuvarna.ticketoffice.domain.models.requests.RegisterRequest;
 import bg.tuvarna.ticketoffice.domain.models.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.services.UserService;
@@ -44,8 +46,12 @@ public class RegisterActivity extends BaseActivity {
         findViewById(R.id.reg_bt_logout).setOnClickListener(view -> logout());
         findViewById(R.id.reg_btn_registration).setOnClickListener(view -> DoRegister());
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.user_roles, android.R.layout.simple_spinner_item);
+        String[] roles = Arrays.stream(Role.values()).filter(r -> r != Role.ADMIN).map(Enum::name)
+                .map(str -> str.charAt(0) + str.substring(1).toLowerCase())
+                .toArray(String[]::new);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, roles);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cb.setAdapter(adapter);
     }

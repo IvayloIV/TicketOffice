@@ -1,5 +1,8 @@
 package bg.tuvarna.ticketoffice.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import java.lang.annotation.Annotation;
 
 import bg.tuvarna.ticketoffice.domain.enums.Role;
@@ -19,20 +22,27 @@ public class HttpClient {
     private final Converter<ResponseBody, CommonMessageResponse> converter;
     private final UserService userService;
     private final NotificationService notificationService;
+    private final EventService eventService;
+    private final TicketService ticketService;
 
     private Role userRole;
     private String jwt;
 
     private HttpClient() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(String.format("%s://%s:%s/", PROTOCOL, IP, PORT))
-            .addConverterFactory(JacksonConverterFactory.create())
+            .addConverterFactory(JacksonConverterFactory.create(objectMapper))
             .build();
 
         converter = retrofit.responseBodyConverter(CommonMessageResponse.class, new Annotation[0]);
 
         userService = retrofit.create(UserService.class);
         notificationService = retrofit.create(NotificationService.class);
+        eventService = retrofit.create(EventService.class);
+        ticketService = retrofit.create(TicketService.class);
     }
 
     public static synchronized HttpClient getInstance() {
@@ -53,6 +63,14 @@ public class HttpClient {
 
     public NotificationService getNotificationService() {
         return notificationService;
+    }
+
+    public EventService getEventService() {
+        return eventService;
+    }
+
+    public TicketService getTicketService() {
+        return ticketService;
     }
 
     public Role getUserRole() {

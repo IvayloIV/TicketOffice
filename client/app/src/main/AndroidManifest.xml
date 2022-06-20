@@ -17,6 +17,9 @@
         android:theme="@style/Theme.TicketOffice"
         tools:ignore="HardcodedDebugMode">
         <activity
+            android:name=".activities.CreateTicketActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity
