@@ -39,6 +39,7 @@ public class HomeActivity extends BaseActivity {
 
         Button createButton = findViewById(R.id.home_btn_create);
         if (userRole.equals(Role.ORGANISER)) {
+            createButton.setOnClickListener(view -> showPage(ModifyEventActivity.class));
             createButton.setText(R.string.home_btn_create_event);
         } else if (userRole.equals(Role.DISTRIBUTOR)) {
             createButton.setOnClickListener(view -> showPage(CreateTicketActivity.class));

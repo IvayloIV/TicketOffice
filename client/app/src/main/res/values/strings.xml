@@ -14,7 +14,7 @@
     <string name="reg_btn_registration"> CREATE </string>
     <string name="home_btn_logout"> Logout </string>
     <string name="home_btn_profile"> My Profile </string>
-    <string name="home_btn_organizer_list"> Organizers </string>
+    <string name="home_btn_organizer_list"> Organisers </string>
     <string name="home_btn_create_event"> Create event </string>
     <string name="home_btn_create_ticket"> Create ticket </string>
     <string name="home_btn_distributor_list"> Distributors </string>
@@ -28,4 +28,21 @@
     <string name="create_ticket_tv_event">Event</string>
     <string name="create_ticket_btn_create">Create</string>
     <string name="create_ticket_btn_back">Back</string>
+    <string name="modify_event_tv_create_title">Create Event</string>
+    <string name="modify_event_btn_create">Create</string>
+    <string name="modify_event_btn_back">Back</string>
+    <string name="modify_event_tv_type">Type</string>
+    <string name="modify_event_tv_places_count">Places count</string>
+    <string name="modify_event_tv_places_type">Places type</string>
+    <string name="modify_event_tv_price">Price</string>
+    <string name="modify_event_tv_tickets_per_user">Tickets per user</string>
+    <string name="modify_event_tv_start_date">Start date</string>
+    <string name="modify_event_tv_location">Location</string>
+    <string name="modify_event_start_date_error">Invalid date format.</string>
+    <string name="modify_event_start_date_hint">format: dd.MM.yyyy HH:mm</string>
+    <string name="modify_event_add_distributors">Add distributors</string>
+    <string name="distributors_fragment_title">Distributors: </string>
+    <string name="distributors_fragment_btn_ok">OK</string>
+    <string name="modify_ticket_btn_edit">Edit</string>
+    <string name="modify_event_tv_edit_title">Edit Event</string>
 </resources>

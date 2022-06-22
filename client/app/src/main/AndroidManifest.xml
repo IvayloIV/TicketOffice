@@ -20,6 +20,9 @@
             android:name=".activities.CreateTicketActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.ModifyEventActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity

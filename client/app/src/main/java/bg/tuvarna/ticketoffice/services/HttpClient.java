@@ -15,7 +15,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class HttpClient {
 
     private static final String PROTOCOL = "http";
-    private static final String IP = "192.168.0.102";
+    private static final String IP = "192.168.0.103";
     private static final String PORT = "8080";
     private static HttpClient client;
 
@@ -24,6 +24,7 @@ public class HttpClient {
     private final NotificationService notificationService;
     private final EventService eventService;
     private final TicketService ticketService;
+    private final DistributorService distributorService;
 
     private Role userRole;
     private String jwt;
@@ -43,6 +44,7 @@ public class HttpClient {
         notificationService = retrofit.create(NotificationService.class);
         eventService = retrofit.create(EventService.class);
         ticketService = retrofit.create(TicketService.class);
+        distributorService = retrofit.create(DistributorService.class);
     }
 
     public static synchronized HttpClient getInstance() {
@@ -71,6 +73,10 @@ public class HttpClient {
 
     public TicketService getTicketService() {
         return ticketService;
+    }
+
+    public DistributorService getDistributorService() {
+        return distributorService;
     }
 
     public Role getUserRole() {
