@@ -45,4 +45,11 @@
     <string name="distributors_fragment_btn_ok">OK</string>
     <string name="modify_ticket_btn_edit">Edit</string>
     <string name="modify_event_tv_edit_title">Edit Event</string>
+    <string name="user_details_role_text">Role: </string>
+    <string name="user_details_events_fee_text">Events fee: </string>
+    <string name="user_details_events_count_text">Events count: </string>
+    <string name="user_details_active_events_text">Active events: </string>
+    <string name="user_details_sold_tickets_text">Sold tickets: </string>
+    <string name="user_details_rating_text">User rating: </string>
+    <string name="user_details_rate_text">Rate: </string>
 </resources>

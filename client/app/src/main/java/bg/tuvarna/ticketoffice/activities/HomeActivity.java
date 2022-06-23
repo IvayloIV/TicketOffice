@@ -32,7 +32,7 @@ public class HomeActivity extends BaseActivity {
         notificationButton = findViewById(R.id.home_btn_notification);
         notificationButton.setOnClickListener(this::showNotifications);
         findViewById(R.id.home_btn_logout).setOnClickListener(view -> logout());
-        findViewById(R.id.home_btn_profile).setOnClickListener(view -> logout());
+        findViewById(R.id.home_btn_profile).setOnClickListener(view -> showPage(UserDetailsActivity.class));
         findViewById(R.id.home_btn_organizer_list).setOnClickListener(view -> logout());
 
         Role userRole = getClient().getUserRole();

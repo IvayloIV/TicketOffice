@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_details_layout_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateTicketActivity">
+
+    <TextView
+        android:id="@+id/user_details_rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/user_details_rating_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_sold_tickets_text" />
+
+    <TextView
+        android:id="@+id/user_details_sold_tickets_value"
+        android:layout_width="170dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="28dp"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@+id/user_details_sold_tickets_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_active_events_value" />
+
+    <TextView
+        android:id="@+id/user_details_sold_tickets_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/user_details_sold_tickets_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_active_events_text" />
+
+    <TextView
+        android:id="@+id/user_details_active_events_value"
+        android:layout_width="170dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="28dp"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@+id/user_details_active_events_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_events_count_value" />
+
+    <TextView
+        android:id="@+id/user_details_active_events_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/user_details_active_events_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_events_count_text" />
+
+    <TextView
+        android:id="@+id/user_details_events_count_value"
+        android:layout_width="170dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@+id/user_details_events_count_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_events_fee_value" />
+
+    <TextView
+        android:id="@+id/user_details_events_count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/user_details_events_count_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_events_fee_text" />
+
+    <TextView
+        android:id="@+id/user_details_events_fee_value"
+        android:layout_width="170dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="26dp"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@+id/user_details_events_fee_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_role_value" />
+
+    <TextView
+        android:id="@+id/user_details_events_fee_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/user_details_events_fee_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_role_text" />
+
+    <TextView
+        android:id="@+id/user_details_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_btn_back" />
+
+    <Button
+        android:id="@+id/user_details_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="311dp"
+        android:text="@string/create_ticket_btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_details_role_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="53dp"
+        android:text="@string/user_details_role_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_tv_name" />
+
+    <TextView
+        android:id="@+id/user_details_role_value"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="53dp"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@+id/user_details_role_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_tv_name" />
+
+    <RatingBar
+        android:id="@+id/user_details_rate_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="24dp"
+        android:stepSize="1"
+        app:layout_constraintStart_toEndOf="@+id/user_details_rate_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_rating_value" />
+
+    <TextView
+        android:id="@+id/user_details_rate_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/user_details_rate_text"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_rating_text" />
+
+    <TextView
+        android:id="@+id/user_details_rating_value"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@+id/user_details_rating_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_details_sold_tickets_value" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -83,7 +83,7 @@ public class RegisterActivity extends BaseActivity {
                     Toast.makeText(RegisterActivity.this, commonMessageResponse.getMessage(), Toast.LENGTH_LONG).show();
                 } else if (code == 422) {
                     showErrorInputMessages(response);
-                } if (code == HttpURLConnection.HTTP_BAD_REQUEST) {
+                } else if (code == HttpURLConnection.HTTP_BAD_REQUEST) {
                     handleCommonMessage(response);
                 } else if (code == HttpURLConnection.HTTP_UNAUTHORIZED) {
                     handleUnauthorized();
