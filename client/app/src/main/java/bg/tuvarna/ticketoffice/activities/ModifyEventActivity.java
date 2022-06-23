@@ -83,14 +83,15 @@ public class ModifyEventActivity extends BaseActivity implements ChangeDistribut
         Button modifyEventButton = findViewById(R.id.modify_event_btn);
         TextView titleView = findViewById(R.id.modify_event_tv_title);
         if (eventId > -1) {
+            findViewById(R.id.modify_event_btn_back).setOnClickListener(view -> showPage(EventListActivity.class));
             modifyEventButton.setText(R.string.modify_ticket_btn_edit);
             titleView.setText(R.string.modify_event_tv_edit_title);
         } else {
+            findViewById(R.id.modify_event_btn_back).setOnClickListener(view -> showPage(HomeActivity.class));
             modifyEventButton.setText(R.string.modify_event_btn_create);
             titleView.setText(R.string.modify_event_tv_create_title);
         }
 
-        findViewById(R.id.modify_event_btn_back).setOnClickListener(view -> showPage(HomeActivity.class));
         modifyEventButton.setOnClickListener(view -> createEvent());
         findViewById(R.id.modify_event_add_distributors).setOnClickListener(view -> {
             DistributorService distributorService = getClient().getDistributorService();

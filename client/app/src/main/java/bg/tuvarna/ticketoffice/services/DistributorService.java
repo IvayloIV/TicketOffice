@@ -22,5 +22,5 @@ import retrofit2.http.QueryMap;
 public interface DistributorService {
 
     @GET("distributor/list")
-    Call<List<DistributorListResponse>> list(@QueryMap Map<String, String> options, @Header("Authorization") String authorization);
+    Call<List<DistributorListResponse>> list(@QueryMap Map<String, String> filters, @Header("Authorization") String authorization);
 }

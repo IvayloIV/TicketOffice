@@ -26,6 +26,9 @@
             android:name=".activities.UserDetailsActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.EventListActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity

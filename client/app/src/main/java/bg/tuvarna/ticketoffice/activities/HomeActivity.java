@@ -1,7 +1,6 @@
 package bg.tuvarna.ticketoffice.activities;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +32,7 @@ public class HomeActivity extends BaseActivity {
         notificationButton.setOnClickListener(this::showNotifications);
         findViewById(R.id.home_btn_logout).setOnClickListener(view -> logout());
         findViewById(R.id.home_btn_profile).setOnClickListener(view -> showPage(UserDetailsActivity.class));
-        findViewById(R.id.home_btn_organizer_list).setOnClickListener(view -> logout());
+        findViewById(R.id.home_btn_event_list).setOnClickListener(view -> showPage(EventListActivity.class));
 
         Role userRole = getClient().getUserRole();
 
