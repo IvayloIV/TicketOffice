@@ -1,9 +1,7 @@
 package bg.tuvarna.ticketoffice.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,13 +44,6 @@ public class LoginActivity extends BaseActivity {
         tvPasswordError = findViewById(R.id.login_error_password);
 
         findViewById(R.id.login_btn_login).setOnClickListener(view -> DoLogin());
-
-        if (Debug.isDebuggerConnected()) {
-            SetDebugInfo();
-        } else {
-            etUserLoginInput.setText("Ivan");
-            etPassword.setText("1234");
-        }
     }
 
     @Override
@@ -67,12 +58,6 @@ public class LoginActivity extends BaseActivity {
         super.onSaveInstanceState(outState);
         etUserLoginInput.setText(outState.getString(LOGIN_USER_INFO));
         etPassword.setText(outState.getString(LOGIN_PASSWORD));
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void SetDebugInfo() {
-        etUserLoginInput.setText("admin");
-        etPassword.setText("1234");
     }
 
     private void DoLogin() {

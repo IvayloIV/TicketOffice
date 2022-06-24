@@ -29,6 +29,9 @@
             android:name=".activities.EventListActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.DistributorListActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity

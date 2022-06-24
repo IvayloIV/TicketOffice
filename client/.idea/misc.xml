@@ -3,11 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ivaylo_nikolaev/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_create_event.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_create_ticket.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_distributor_list.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_event_list.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_events.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_home.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_login.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_main.xml" value="0.3546875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_modify_event.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_register.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/activity_user_details.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/dialog_distributor_element.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/dialog_notification_element.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/distributor_element.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/event_element.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/fragment_dialog_distributor_filters.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/fragment_dialog_distributors.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/fragment_dialog_distributors_filters.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/fragment_dialog_event_filters.xml" value="0.36875" />
+        <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/fragment_dialog_events.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/layout/fragment_dialog_notifications.xml" value="0.36875" />
         <entry key="..\:/Users/Ivaylo_nikolaev/Desktop/TicketOffice/client/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.33611111111111114" />
       </map>

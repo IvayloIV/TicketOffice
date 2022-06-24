@@ -46,8 +46,8 @@ public class HomeActivity extends BaseActivity {
         }
 
         Button distributors = findViewById(R.id.home_btn_distributor_list);
-        distributors.setOnClickListener(view -> logout());
         if (userRole.equals(Role.ORGANISER)) {
+            distributors.setOnClickListener(view -> showPage(DistributorListActivity.class));
             distributors.setVisibility(View.VISIBLE);
         } else if (userRole.equals(Role.DISTRIBUTOR)) {
             distributors.setVisibility(View.INVISIBLE);

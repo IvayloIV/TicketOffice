@@ -16,9 +16,10 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import bg.tuvarna.ticketoffice.R;
-import bg.tuvarna.ticketoffice.adapters.EventsAdapter;
+import bg.tuvarna.ticketoffice.adapters.EventListAdapter;
+import bg.tuvarna.ticketoffice.domain.enums.Role;
 import bg.tuvarna.ticketoffice.domain.models.responses.EventListResponse;
-import bg.tuvarna.ticketoffice.fragments.DialogEventsFragment;
+import bg.tuvarna.ticketoffice.fragments.DialogEventListFragment;
 import bg.tuvarna.ticketoffice.fragments.listeners.EventFilterDialogListener;
 import bg.tuvarna.ticketoffice.services.EventService;
 import retrofit2.Call;
@@ -42,9 +43,9 @@ public class EventListActivity extends BaseActivity implements EventFilterDialog
         findViewById(R.id.event_list_btn_back).setOnClickListener(view -> showPage(HomeActivity.class));
         findViewById(R.id.event_list_btn_filters).setOnClickListener(view -> {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            DialogEventsFragment dialogEventsFragment = DialogEventsFragment.newInstance(startDate, location, active);
+            DialogEventListFragment dialogEventListFragment = DialogEventListFragment.newInstance(startDate, location, active);
             try {
-                dialogEventsFragment.show(fragmentManager, "events_fragment");
+                dialogEventListFragment.show(fragmentManager, "events_fragment");
             } catch (IllegalStateException ex) {
                 ex.printStackTrace();
             }
@@ -84,8 +85,6 @@ public class EventListActivity extends BaseActivity implements EventFilterDialog
         Consumer<Long> editRedirect = this::editRedirect;
         Context context = getApplicationContext();
 
-        System.out.println(LocalDateTime.now().toString());
-
         Map<String, String> filters = new HashMap<>();
         if (location != null) {
             filters.put("location", location);
@@ -105,7 +104,8 @@ public class EventListActivity extends BaseActivity implements EventFilterDialog
                     if (code == HttpURLConnection.HTTP_OK) {
                         List<EventListResponse> events = response.body();
 
-                        EventsAdapter adapter = new EventsAdapter(events, editRedirect);
+                        boolean isOrganiser = getClient().getUserRole().equals(Role.ORGANISER);
+                        EventListAdapter adapter = new EventListAdapter(events, editRedirect, isOrganiser);
                         eventsRv.setLayoutManager(new LinearLayoutManager(context));
                         eventsRv.setAdapter(adapter);
                     } else if (code == HttpURLConnection.HTTP_UNAUTHORIZED) {

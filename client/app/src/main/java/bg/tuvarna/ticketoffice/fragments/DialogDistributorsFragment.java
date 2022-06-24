@@ -71,7 +71,10 @@ public class DialogDistributorsFragment extends DialogFragment {
         btnOk.setOnClickListener((v) -> {
             Set<Long> selectedIds = adapter.getSelectedIds();
             if (selectedIds.size() == 0) {
-                Toast.makeText(getActivity(), "Please, select at least one distributor!", Toast.LENGTH_LONG).show();
+                String emptyListMsg = getActivity().getApplicationContext()
+                        .getResources().getString(R.string.distributors_fragment_empty_list);
+                Toast.makeText(getActivity(), emptyListMsg, Toast.LENGTH_LONG).show();
+                return;
             } else {
                 listener.onFinishAddDialog(new ArrayList<>(selectedIds));
             }

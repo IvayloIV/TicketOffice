@@ -53,8 +53,7 @@ public class UserDetailsActivity extends BaseActivity {
         if (userId == -1) {
             findViewById(R.id.user_details_btn_back).setOnClickListener(view -> showPage(HomeActivity.class));
         } else {
-            //TODO: return to distributor list
-            findViewById(R.id.user_details_btn_back).setOnClickListener(view -> showPage(HomeActivity.class));
+            findViewById(R.id.user_details_btn_back).setOnClickListener(view -> showPage(DistributorListActivity.class));
         }
 
         if (getClient().getUserRole().equals(Role.DISTRIBUTOR)) {

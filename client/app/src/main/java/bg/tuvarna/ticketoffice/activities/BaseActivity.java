@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
 
+import bg.tuvarna.ticketoffice.R;
 import bg.tuvarna.ticketoffice.domain.models.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.models.responses.LoginResponse;
 import bg.tuvarna.ticketoffice.services.HttpClient;
@@ -31,7 +32,8 @@ public class BaseActivity extends AppCompatActivity {
 
     public void handleUnauthorized() {
         logout();
-        Toast.makeText(BaseActivity.this, "Session expired!", Toast.LENGTH_LONG).show();
+        String sessionMsg = getApplicationContext().getResources().getString(R.string.session_expired_text);
+        Toast.makeText(BaseActivity.this, sessionMsg, Toast.LENGTH_LONG).show();
     }
 
     public void logout() {
@@ -41,7 +43,8 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void handleFailureRequest() {
-        Toast.makeText(BaseActivity.this, "Something went wrong.", Toast.LENGTH_LONG).show();
+        String errorMsg = getApplicationContext().getResources().getString(R.string.unknown_error);
+        Toast.makeText(BaseActivity.this, errorMsg, Toast.LENGTH_LONG).show();
     }
 
     public void showPage(Class<? extends AppCompatActivity> activityClass) {

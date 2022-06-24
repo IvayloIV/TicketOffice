@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Ticket Office</string>
+    <string name="session_expired_text">Session expired!</string>
+    <string name="unknown_error">Something went wrong.</string>
     <string name="login_activity_name">Login</string>
     <string name="login_tv_username"> Username </string>
     <string name="login_tv_password"> Password </string>
@@ -43,6 +45,7 @@
     <string name="modify_event_add_distributors">Add distributors</string>
     <string name="distributors_fragment_title">Distributors: </string>
     <string name="distributors_fragment_btn_ok">OK</string>
+    <string name="distributors_fragment_empty_list">Please, select at least one distributor!</string>
     <string name="modify_ticket_btn_edit">Edit</string>
     <string name="modify_event_tv_edit_title">Edit Event</string>
     <string name="user_details_role_text">Role: </string>
@@ -61,4 +64,12 @@
     <string name="events_fragment_start_date_et">dd.MM.yyyy HH:mm</string>
     <string name="events_fragment_active_tv">Active: </string>
     <string name="events_fragment_start_date_error">Invalid date format.</string>
+    <string name="distributor_list_btn_back">Back</string>
+    <string name="distributor_list_btn_filters">Filters</string>
+    <string name="distributor_list_rating_tv">Rating:</string>
+    <string name="distributor_list_sold_tickets_tv">Sold tickets:</string>
+    <string name="distributor_filters_title">Distributor filters: </string>
+    <string name="distributor_filters_name_tv">Name: </string>
+    <string name="distributor_filters_rating_tv">Rating: </string>
+    <string name="distributor_filters_sold_tickets_tv">Sold tickets: </string>
 </resources>

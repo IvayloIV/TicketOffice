@@ -13,23 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import bg.tuvarna.ticketoffice.R;
-import bg.tuvarna.ticketoffice.adapters.NotificationsAdapter;
-import bg.tuvarna.ticketoffice.domain.models.responses.NotificationListResponse;
-import bg.tuvarna.ticketoffice.fragments.listeners.ChangeDistributorsDialogListener;
 import bg.tuvarna.ticketoffice.fragments.listeners.EventFilterDialogListener;
 
-public class DialogEventsFragment extends DialogFragment {
+public class DialogEventListFragment extends DialogFragment {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     private static final String START_DATE = "START_DATE";
@@ -38,8 +30,8 @@ public class DialogEventsFragment extends DialogFragment {
 
     private EventFilterDialogListener listener;
 
-    public static DialogEventsFragment newInstance(LocalDateTime startDate, String location, Boolean active) {
-        DialogEventsFragment fragment = new DialogEventsFragment();
+    public static DialogEventListFragment newInstance(LocalDateTime startDate, String location, Boolean active) {
+        DialogEventListFragment fragment = new DialogEventListFragment();
         Bundle args = new Bundle();
         if (startDate != null) {
             args.putSerializable(START_DATE, startDate.format(DATE_FORMATTER));
@@ -54,7 +46,7 @@ public class DialogEventsFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dialog_events, container, false);
+        return inflater.inflate(R.layout.fragment_dialog_event_filters, container, false);
     }
 
     @Override

@@ -11,13 +11,13 @@ import java.util.function.Consumer;
 
 import bg.tuvarna.ticketoffice.R;
 
-public class EventsViewHolder extends RecyclerView.ViewHolder{
+public class EventListViewHolder extends RecyclerView.ViewHolder{
 
     private final TextView typeTv;
     private final TextView startDateTv;
     private final TextView locationTv;
 
-    public EventsViewHolder(@NonNull View itemView) {
+    public EventListViewHolder(@NonNull View itemView) {
         super(itemView);
         typeTv = itemView.findViewById(R.id.event_type_tv);
         startDateTv = itemView.findViewById(R.id.event_start_date_tv);

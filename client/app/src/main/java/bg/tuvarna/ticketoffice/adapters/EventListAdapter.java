@@ -13,30 +13,32 @@ import java.util.function.Consumer;
 
 import bg.tuvarna.ticketoffice.R;
 import bg.tuvarna.ticketoffice.domain.models.responses.EventListResponse;
-import bg.tuvarna.ticketoffice.holders.EventsViewHolder;
+import bg.tuvarna.ticketoffice.holders.EventListViewHolder;
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsViewHolder>{
+public class EventListAdapter extends RecyclerView.Adapter<EventListViewHolder>{
 
     private final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     private final List<EventListResponse> data;
     private final Consumer<Long> onEditClick;
+    private final boolean isOrganiser;
 
-    public EventsAdapter(List<EventListResponse> data, Consumer<Long> onEditClick) {
+    public EventListAdapter(List<EventListResponse> data, Consumer<Long> onEditClick, boolean isOrganiser) {
         this.data = data;
         this.onEditClick = onEditClick;
+        this.isOrganiser = isOrganiser;
     }
 
     @NonNull
     @Override
-    public EventsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EventListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.event_element, parent, false);
 
-        return new EventsViewHolder(view);
+        return new EventListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EventListViewHolder holder, int position) {
         EventListResponse event = data.get(position);
 
         String type = event.getType();
@@ -46,10 +48,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsViewHolder>{
         holder.setType(type);
         holder.setLocation(event.getLocation());
         holder.setStartDate(event.getStartDate().format(DATE_FORMATTER));
-        holder.itemView.setOnLongClickListener(v -> {
-            onEditClick.accept(event.getId());
-            return true;
-        });
+        if (isOrganiser) {
+            holder.itemView.setOnLongClickListener(v -> {
+                onEditClick.accept(event.getId());
+                return true;
+            });
+        }
     }
 
     @Override
