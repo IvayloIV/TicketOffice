@@ -1,5 +1,6 @@
 package bg.tuvarna.ticketoffice.domain.dtos.requests;
 
+import bg.tuvarna.ticketoffice.domain.groups.Extended;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,11 +20,11 @@ public class EditEventRequest {
     private Long id;
 
     @NotEmpty(message = "{eventEdit.emptyType}")
-    @Length(min = 2, message = "{eventEdit.invalidType}")
+    @Length(min = 2, message = "{eventEdit.invalidType}", groups = Extended.class)
     private String type;
 
     @NotNull(message = "{eventEdit.nullPlacesCount}")
-    @Min(value = 5, message = "{eventEdit.invalidPlacesCount}")
+    @Min(value = 5, message = "{eventEdit.invalidPlacesCount}", groups = Extended.class)
     @JsonProperty("places_count")
     private Integer placesCount;
 
@@ -32,7 +33,7 @@ public class EditEventRequest {
     private String placesType;
 
     @NotNull(message = "{eventEdit.nullPrice}")
-    @DecimalMin(value = "0.5", message = "{eventEdit.invalidPrice}")
+    @DecimalMin(value = "0.5", message = "{eventEdit.invalidPrice}", groups = Extended.class)
     private Double price;
 
     @Positive(message = "{eventEdit.invalidTicketsPerUser}")
@@ -44,7 +45,7 @@ public class EditEventRequest {
     private LocalDateTime startDate;
 
     @NotEmpty(message = "{eventEdit.emptyLocation}")
-    @Length(min = 2, message = "{eventEdit.invalidLocation}")
+    @Length(min = 2, message = "{eventEdit.invalidLocation}", groups = Extended.class)
     private String location;
 
     @NotEmpty(message = "{eventEdit.emptyDistributorList}")

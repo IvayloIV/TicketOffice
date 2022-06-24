@@ -217,7 +217,9 @@ public class ModifyEventActivity extends BaseActivity implements ChangeDistribut
             editEventRequest.setId(eventId);
             editEventRequest.setType(type);
             editEventRequest.setPlacesCount(placesCount);
-            editEventRequest.setPlacesType(placesType);
+            if (placesType.length() > 0) {
+                editEventRequest.setPlacesType(placesType);
+            }
             editEventRequest.setPrice(price);
             editEventRequest.setTicketsPerUser(ticketsPerUser);
             editEventRequest.setStartDate(startDate);
@@ -229,7 +231,9 @@ public class ModifyEventActivity extends BaseActivity implements ChangeDistribut
             CreateEventRequest createEventRequest = new CreateEventRequest();
             createEventRequest.setType(type);
             createEventRequest.setPlacesCount(placesCount);
-            createEventRequest.setPlacesType(placesType);
+            if (placesType.length() > 0) {
+                createEventRequest.setPlacesType(placesType);
+            }
             createEventRequest.setPrice(price);
             createEventRequest.setTicketsPerUser(ticketsPerUser);
             createEventRequest.setStartDate(startDate);

@@ -3,10 +3,12 @@ package bg.tuvarna.ticketoffice.web.controllers;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateTicketRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.entities.User;
+import bg.tuvarna.ticketoffice.domain.groups.OrderSequence;
 import bg.tuvarna.ticketoffice.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,7 @@ public class TicketController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<CommonMessageResponse> create(@Valid @RequestBody CreateTicketRequest createTicketRequest,
+    public ResponseEntity<CommonMessageResponse> create(@Validated(OrderSequence.class) @RequestBody CreateTicketRequest createTicketRequest,
                                                         Authentication authentication) {
         return ticketService.create(createTicketRequest, (User) authentication.getPrincipal());
     }

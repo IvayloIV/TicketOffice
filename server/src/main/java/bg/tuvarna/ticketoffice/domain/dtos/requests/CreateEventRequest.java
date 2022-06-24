@@ -1,5 +1,6 @@
 package bg.tuvarna.ticketoffice.domain.dtos.requests;
 
+import bg.tuvarna.ticketoffice.domain.groups.Extended;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,11 +18,11 @@ import java.util.List;
 public class CreateEventRequest {
 
     @NotEmpty(message = "{eventCreate.emptyType}")
-    @Length(min = 2, message = "{eventCreate.invalidType}")
+    @Length(min = 2, message = "{eventCreate.invalidType}", groups = Extended.class)
     private String type;
 
     @NotNull(message = "{eventCreate.nullPlacesCount}")
-    @Min(value = 5, message = "{eventCreate.invalidPlacesCount}")
+    @Min(value = 5, message = "{eventCreate.invalidPlacesCount}", groups = Extended.class)
     @JsonProperty("places_count")
     private Integer placesCount;
 
@@ -30,7 +31,7 @@ public class CreateEventRequest {
     private String placesType;
 
     @NotNull(message = "{eventCreate.nullPrice}")
-    @DecimalMin(value = "0.5", message = "{eventCreate.invalidPrice}")
+    @DecimalMin(value = "0.5", message = "{eventCreate.invalidPrice}", groups = Extended.class)
     private Double price;
 
     @Positive(message = "{eventCreate.invalidTicketsPerUser}")
@@ -42,7 +43,7 @@ public class CreateEventRequest {
     private LocalDateTime startDate;
 
     @NotEmpty(message = "{eventCreate.emptyLocation}")
-    @Length(min = 2, message = "{eventCreate.invalidLocation}")
+    @Length(min = 2, message = "{eventCreate.invalidLocation}", groups = Extended.class)
     private String location;
 
     @NotEmpty(message = "{eventCreate.emptyDistributorList}")

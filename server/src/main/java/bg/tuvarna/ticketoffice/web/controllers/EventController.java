@@ -7,10 +7,12 @@ import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventDetailsResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.EventListResponse;
 import bg.tuvarna.ticketoffice.domain.entities.User;
+import bg.tuvarna.ticketoffice.domain.groups.OrderSequence;
 import bg.tuvarna.ticketoffice.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,13 +30,13 @@ public class EventController {
     }
 
     @PostMapping(value = "/create")
-    public ResponseEntity<CommonMessageResponse> create(@Valid @RequestBody CreateEventRequest createEventRequest,
+    public ResponseEntity<CommonMessageResponse> create(@Validated(OrderSequence.class) @RequestBody CreateEventRequest createEventRequest,
                                                         Authentication authentication) {
         return eventService.create(createEventRequest, (User) authentication.getPrincipal());
     }
 
     @PutMapping(value = "/edit")
-    public ResponseEntity<CommonMessageResponse> edit(@Valid @RequestBody EditEventRequest editEventRequest,
+    public ResponseEntity<CommonMessageResponse> edit(@Validated(OrderSequence.class) @RequestBody EditEventRequest editEventRequest,
                                                         Authentication authentication) {
         return eventService.edit(editEventRequest, (User) authentication.getPrincipal());
     }

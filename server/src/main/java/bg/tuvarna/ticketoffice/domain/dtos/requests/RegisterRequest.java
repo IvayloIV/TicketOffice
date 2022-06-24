@@ -1,5 +1,6 @@
 package bg.tuvarna.ticketoffice.domain.dtos.requests;
 
+import bg.tuvarna.ticketoffice.domain.groups.Extended;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,11 +15,11 @@ import javax.validation.constraints.NotEmpty;
 public class RegisterRequest {
 
     @NotEmpty(message = "{userRegister.emptyName}")
-    @Length(min = 3, message = "{userRegister.invalidName}")
+    @Length(min = 3, message = "{userRegister.invalidName}", groups = Extended.class)
     private String name;
 
     @NotEmpty(message = "{userRegister.emptyPassword}")
-    @Length(min = 3, message = "{userRegister.invalidPassword}")
+    @Length(min = 3, message = "{userRegister.invalidPassword}", groups = Extended.class)
     private String password;
 
     @NotBlank(message = "{userRegister.blankRole}")

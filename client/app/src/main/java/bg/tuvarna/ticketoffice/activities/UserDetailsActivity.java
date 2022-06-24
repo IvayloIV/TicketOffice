@@ -124,11 +124,23 @@ public class UserDetailsActivity extends BaseActivity {
 
                         tvNameInput.setText(user.getName());
                         tvRoleInput.setText(roleStr.charAt(0) + roleStr.substring(1).toLowerCase());
-                        tvEventsFeeInput.setText(String.format("%.2f", user.getEventsFee()));
+                        Double eventsFee = user.getEventsFee();
+                        if (eventsFee == null) {
+                            eventsFee = 0.0;
+                        }
+                        tvEventsFeeInput.setText(String.format("%.2f", eventsFee));
                         tvEventsCountInput.setText(String.valueOf(user.getEventsCount()));
                         tvActiveEventsInput.setText(String.valueOf(user.getActiveEvents()));
-                        tvSoldTicketsInput.setText(String.valueOf(user.getSoldEventsTickets()));
-                        tvRatingInput.setText(String.format("%.2f", user.getAverageRating()));
+                        Long soldEventsTickets = user.getSoldEventsTickets();
+                        if (soldEventsTickets == null) {
+                            soldEventsTickets = 0L;
+                        }
+                        tvSoldTicketsInput.setText(String.valueOf(soldEventsTickets));
+                        Double averageRating = user.getAverageRating();
+                        if (averageRating == null) {
+                            averageRating = 0.0;
+                        }
+                        tvRatingInput.setText(String.format("%.2f", averageRating));
                     } else if (code == HttpURLConnection.HTTP_UNAUTHORIZED) {
                         handleUnauthorized();
                     }

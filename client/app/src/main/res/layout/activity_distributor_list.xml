@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dialog_distributor_list_rv"
         android:layout_width="0dp"
-        android:layout_height="630dp"
+        android:layout_height="600dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="5dp"

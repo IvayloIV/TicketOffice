@@ -7,10 +7,12 @@ import bg.tuvarna.ticketoffice.domain.dtos.responses.CommonMessageResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.LoginResponse;
 import bg.tuvarna.ticketoffice.domain.dtos.responses.UserProfileResponse;
 import bg.tuvarna.ticketoffice.domain.entities.User;
+import bg.tuvarna.ticketoffice.domain.groups.OrderSequence;
 import bg.tuvarna.ticketoffice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<CommonMessageResponse> login(@Valid @RequestBody RegisterRequest registerRequest) {
+    public ResponseEntity<CommonMessageResponse> register(@Validated(OrderSequence.class) @RequestBody RegisterRequest registerRequest) {
         return userService.register(registerRequest);
     }
 

@@ -37,6 +37,46 @@
             <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
             <column name="role" value="DISTRIBUTOR"/>
         </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Mihael"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Petur"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Ivana"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Galina"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Yordan"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Nikolaj"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Maksim"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
+        <insert tableName="ticket_user">
+            <column name="name" value="Petya"/>
+            <column name="user_password" value="$2a$10$hca7WogBIkMxgb34.440IOJlshKW8RKNJUEkkcfEgHXkcmKBUjaKe"/>
+            <column name="role" value="DISTRIBUTOR"/>
+        </insert>
 
         <insert tableName="event">
             <column name="type" value="Spider-Man: No Way Home"/>
@@ -88,6 +128,66 @@
             <column name="location" value="Paradise Center, Sofia"/>
             <column name="user_id" valueNumeric="3"/>
         </insert>
+        <insert tableName="event">
+            <column name="type" value="Senior Year"/>
+            <column name="places_count" valueNumeric="100"/>
+            <column name="places_type" value="Planetarium Seating"/>
+            <column name="price" valueNumeric="30"/>
+            <column name="tickets_per_user" valueNumeric="10"/>
+            <column name="start_date" valueDate="2022-01-22 18:30:00"/>
+            <column name="location" value="Mall Rousse, Ruse"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Choose or Die"/>
+            <column name="places_count" valueNumeric="150"/>
+            <column name="places_type" value="Premium Glider"/>
+            <column name="price" valueNumeric="50"/>
+            <column name="tickets_per_user" valueNumeric="15"/>
+            <column name="start_date" valueDate="2022-06-30 11:20:00"/>
+            <column name="location" value="Plovdiv Plaza Mall"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Kimi"/>
+            <column name="places_count" valueNumeric="50"/>
+            <column name="places_type" value="Vip Cinema Seating"/>
+            <column name="price" valueNumeric="5"/>
+            <column name="tickets_per_user" valueNumeric="5"/>
+            <column name="start_date" valueDate="2021-02-10 10:20:00"/>
+            <column name="location" value="Grand Mall, Varna"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Halftime"/>
+            <column name="places_count" valueNumeric="67"/>
+            <column name="places_type" value="Premium Glider"/>
+            <column name="price" valueNumeric="8"/>
+            <column name="tickets_per_user" valueNumeric="2"/>
+            <column name="start_date" valueDate="2022-07-15 14:00:00"/>
+            <column name="location" value="Mall Rousse, Ruse"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Home Team"/>
+            <column name="places_count" valueNumeric="98"/>
+            <column name="places_type" value="Vip Cinema Seating"/>
+            <column name="price" valueNumeric="10"/>
+            <column name="tickets_per_user" valueNumeric="4"/>
+            <column name="start_date" valueDate="2022-10-01 13:30:00"/>
+            <column name="location" value="Grand Mall, Varna"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="event">
+            <column name="type" value="Umma"/>
+            <column name="places_count" valueNumeric="20"/>
+            <column name="places_type" value="Vip Kids Sofa"/>
+            <column name="price" valueNumeric="5"/>
+            <column name="tickets_per_user" valueNumeric="3"/>
+            <column name="start_date" valueDate="2022-12-24 15:30:00"/>
+            <column name="location" value="Terra Mall, Gabrovo"/>
+            <column name="user_id" valueNumeric="2"/>
+        </insert>
 
         <insert tableName="distributor">
             <column name="user_id" valueNumeric="4"/>
@@ -112,6 +212,30 @@
         <insert tableName="distributor">
             <column name="user_id" valueNumeric="6"/>
             <column name="event_id" valueNumeric="5"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="7"/>
+            <column name="event_id" valueNumeric="6"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="8"/>
+            <column name="event_id" valueNumeric="7"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="9"/>
+            <column name="event_id" valueNumeric="8"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="10"/>
+            <column name="event_id" valueNumeric="9"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="11"/>
+            <column name="event_id" valueNumeric="10"/>
+        </insert>
+        <insert tableName="distributor">
+            <column name="user_id" valueNumeric="12"/>
+            <column name="event_id" valueNumeric="11"/>
         </insert>
 
         <insert tableName="ticket">
@@ -179,6 +303,41 @@
             <column name="user_from" valueNumeric="2"/>
             <column name="user_to" valueNumeric="6"/>
             <column name="value" valueNumeric="3"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="7"/>
+            <column name="value" valueNumeric="1"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="8"/>
+            <column name="value" valueNumeric="4"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="9"/>
+            <column name="value" valueNumeric="2"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="10"/>
+            <column name="value" valueNumeric="3"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="11"/>
+            <column name="value" valueNumeric="1"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="12"/>
+            <column name="value" valueNumeric="5"/>
+        </insert>
+        <insert tableName="rating">
+            <column name="user_from" valueNumeric="3"/>
+            <column name="user_to" valueNumeric="13"/>
+            <column name="value" valueNumeric="5"/>
         </insert>
 
         <insert tableName="notification">

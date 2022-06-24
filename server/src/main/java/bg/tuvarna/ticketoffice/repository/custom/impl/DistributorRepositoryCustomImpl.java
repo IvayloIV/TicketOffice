@@ -30,7 +30,7 @@ public class DistributorRepositoryCustomImpl implements DistributorRepositoryCus
     @Override
     @SuppressWarnings("unchecked")
     public List<DistributorListResponse> getFilteredDistributors(DistributorListFilterRequest filters, Long organiserId) {
-        String hql = "SELECT id, name, rating, soldTickets " +
+        String hql = "SELECT id, name, coalesce(rating, 0) rating, soldTickets " +
                 "FROM (SELECT " +
                 "   tu.id AS id, " +
                 "   tu.name AS name, " +
