@@ -14,6 +14,8 @@ services:
       interval: 20s
       timeout: 10s
       retries: 30
+    volumes:
+      - dboracle-data:/opt/oracle/oradata
   app:
     container_name: ticketoffice-cont
     image: ticketoffice-img
@@ -23,3 +25,6 @@ services:
     depends_on:
       dboracle:
         condition: service_healthy
+volumes:
+  dboracle-data:
+    driver: local

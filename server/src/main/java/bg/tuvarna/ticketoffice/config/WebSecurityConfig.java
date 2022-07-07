@@ -46,7 +46,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/user/login").permitAll()
+                .antMatchers("/user/login", "/swagger-ui/**", "/v3/api-docs/**", "/docs").permitAll()
                 .antMatchers("/user/register").hasAuthority(Role.ADMIN.name())
                 .antMatchers("/user/profile", "/user/details/*", "/event/list", "/notification/count", "/notification/list").hasAnyAuthority(Role.ORGANISER.name(), Role.DISTRIBUTOR.name())
                 .antMatchers("/event/create", "/event/edit", "/event/details/*", "/user/rate", "/distributor/list").hasAnyAuthority(Role.ORGANISER.name())

@@ -1,5 +1,6 @@
 package bg.tuvarna.ticketoffice.web.controllers;
 
+import bg.tuvarna.ticketoffice.config.OpenAPIConfig;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.CreateEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.EditEventRequest;
 import bg.tuvarna.ticketoffice.domain.dtos.requests.EventListFilterRequest;
@@ -9,6 +10,8 @@ import bg.tuvarna.ticketoffice.domain.dtos.responses.EventListResponse;
 import bg.tuvarna.ticketoffice.domain.entities.User;
 import bg.tuvarna.ticketoffice.domain.groups.TicketValidationSequence;
 import bg.tuvarna.ticketoffice.service.EventService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -19,6 +22,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/event")
+@SecurityRequirement(name = OpenAPIConfig.SECURITY_SCHEME_NAME)
+@Tag(name = "Event")
 public class EventController {
 
     private final EventService eventService;
